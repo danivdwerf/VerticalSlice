@@ -26,6 +26,13 @@ public class MeshGenerator : MonoBehaviour
 		GetComponent<MeshFilter>().mesh = mesh;
 		mesh.vertices = vertices.ToArray();
 		mesh.triangles = triangles.ToArray();
+		Vector2[] uvs = new Vector2[mesh.vertices.Length];
+		for (int i = 0; i < uvs.Length; i++)
+		{
+			uvs[i] = new Vector2(mesh.vertices[i].x,mesh.vertices[i].z);
+		}
+		mesh.uv = uvs;
+		//mesh.uv = new Vector2[new Vector2 (-64, 36), new Vector2 (64, -36)];
 		mesh.RecalculateNormals();
 
 	}
