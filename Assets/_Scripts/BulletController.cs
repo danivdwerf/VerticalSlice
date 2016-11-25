@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour
 		if( coll.collider.tag == "Ground" )
 		{
 			groundController.DestroyGround( destructionCircle );
-			//Destroy(gameObject);
+			Destroy(gameObject);
 		}
 	}
 }

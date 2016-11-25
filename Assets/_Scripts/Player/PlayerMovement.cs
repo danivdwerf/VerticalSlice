@@ -27,16 +27,24 @@ public class PlayerMovement : MonoBehaviour
 		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,1f); 
 		if (hit.collider)
 		{
+			Debug.Log (hit.distance);
 			if (hit.collider.tag == Tags.ground)
 			{
 				if (hit.distance < 0.4f)
 				{
 					jump = true;
-				} else
+					anim.SetBool ("Falling", false);
+				} 
+				else
 				{
 					jump = false;
 				}
 			}
+		}
+		else
+		{
+			anim.SetBool ("Falling", true);
+			//play fall animation
 		}
 	}
 
