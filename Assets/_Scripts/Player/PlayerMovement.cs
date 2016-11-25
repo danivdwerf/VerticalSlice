@@ -20,39 +20,38 @@ public class PlayerMovement : MonoBehaviour
 		speed = 0f;
 		rigid = GetComponent<Rigidbody2D> ();
 		anim = GetComponent <Animator>();
+		jump = false;
 	}
 
 	private void Update()
 	{
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,1f); 
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,0.5f); 
 		if (hit.collider)
 		{
-			Debug.Log (hit.distance);
 			if (hit.collider.tag == Tags.ground)
 			{
 				if (hit.distance < 0.4f)
 				{
-					jump = true;
+					jump = false;
 					anim.SetBool ("Falling", false);
 				} 
-				else
-				{
-					jump = false;
-				}
 			}
 		}
 		else
 		{
-			anim.SetBool ("Falling", true);
-			//play fall animation
+			if (!jump)
+			{
+				anim.SetBool ("Falling", true);
+			}
 		}
 	}
 
 	public void Jump()
 	{
-		if (jump)
+		if (!jump)
 		{
 			rigid.AddForce (Vector3.up * 3000000 * Time.deltaTime);
+			jump = true;
 		}
 	}
 

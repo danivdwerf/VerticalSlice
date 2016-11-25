@@ -12,17 +12,21 @@ public class PlayerGravity : MonoBehaviour
 	}
 	private void Update()
 	{
-		rigid.AddForce (-transform.up*gravity*Time.deltaTime);
-	}
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-		if (other.gameObject.CompareTag (Tags.ground))
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,1f); 
+		if (hit.collider)
 		{
-			gravity = 5000f;
-		} 
-	}
-	private void OnCollisionExit2D(Collision2D other)
-	{
-		gravity = 300000f;
+			if (hit.collider.tag == Tags.ground)
+			{
+				if (hit.distance < 0.1f)
+				{
+					gravity = 5000f;
+				} 
+				else
+				{
+					gravity = 200000f;
+				}
+			}
+		}
+		rigid.AddForce (-transform.up*gravity*Time.deltaTime);
 	}
 }

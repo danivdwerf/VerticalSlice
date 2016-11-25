@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 	private float speed;
 	private void Start()
 	{
-		speed = 0.5f;
+		speed = 0.3f;
 		movement = GetComponent<PlayerMovement>(); 
 	}
 	private void Update()
