@@ -9,10 +9,8 @@ public class BulletController : MonoBehaviour
 
 	void OnCollisionEnter2D( Collision2D coll )
 	{
-		Debug.Log (coll.collider.tag);
 		if( coll.collider.tag == "Ground" )
 		{
-			Debug.Log ("Destory");
 			groundController.DestroyGround( destructionCircle );
 			//Destroy(gameObject);
 		}
