@@ -13,7 +13,7 @@ public class GroundController : MonoBehaviour
 		//reference to sprite renderer
 		sr = GetComponent<SpriteRenderer>(); 
 		//Load in the texture
-		string path = "Assets/Sprites/LevelSprite.jpeg";
+		string path = "Assets/Sprites/Level/Worms_level.png";
 		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(path,typeof(Texture2D));
 		//Create clone of the texture, so we won't alter(fuck up) the original
 		Texture2D tex_clone = (Texture2D) Instantiate(tex);
@@ -23,6 +23,7 @@ public class GroundController : MonoBehaviour
 		hole = new Color(0f, 0f, 0f, 0f);
 		//Set the properties according to the sizes of the new sprite 
 		SetDimensions();
+		//let the bullet know what the ground is
 		BulletController.groundController = this;
 	}
 
