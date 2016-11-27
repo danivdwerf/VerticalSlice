@@ -3,19 +3,19 @@ using System.Collections;
 
 public class Equip : MonoBehaviour
 {
-    private Dequip dequip;
+    //private Dequip dequip;
     private CurrentPlayer currentPlayer;
     private void Start()
     {
-        dequip = GetComponent<Dequip>();
+        //dequip = GetComponent<Dequip>();
         currentPlayer = GetComponent<CurrentPlayer>();
     }
 
-    public void equipWapon(GameObject weapon)
+    public void equipWeapon(GameObject weapon)
     {
         GameObject player =  currentPlayer.currentSelectedPlayer();
-        GameObject newGameobject =  Instantiate(weapon, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), Quaternion.identity) as GameObject;
+		GameObject newGameobject =  Instantiate(weapon, player.transform.position, Quaternion.identity) as GameObject;
         newGameobject.transform.parent = player.transform;
-        dequip.dequipLastWapon(newGameobject);      
+        //dequip.dequipLastWapon(newGameobject);      
     }
 }
