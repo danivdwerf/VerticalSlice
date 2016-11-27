@@ -14,6 +14,7 @@ public class Dequip : MonoBehaviour
             //destroy the the weapon
             Destroy(previosAdd);
         }
+        // set new game object as previos gameobject
         previosAdd = gameobj;
     }
 }
