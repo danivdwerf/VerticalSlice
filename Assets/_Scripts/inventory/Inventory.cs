@@ -12,6 +12,6 @@ public class Inventory : MonoBehaviour
 	}
 	public void SelectWeapon(int weaponIndex)
 	{
-		equipWeapon.equipWeapon (weapons[weaponIndex]);
+		equipWeapon.equipWeapon (weapons [weaponIndex]);
 	}
 }

@@ -527,8 +527,9 @@ GameObject:
   - 4: {fileID: 1359062804}
   - 114: {fileID: 1359062803}
   - 114: {fileID: 1359062806}
-  - 114: {fileID: 1359062805}
   - 114: {fileID: 1359062807}
+  - 114: {fileID: 1359062808}
+  - 114: {fileID: 1359062805}
   m_Layer: 0
   m_Name: Gamecontroller
   m_TagString: Untagged
@@ -570,10 +571,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359062802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ac29414e047de4ea3ede1eb64010e2, type: 3}
+  m_Script: {fileID: 11500000, guid: b8c2982a2655fba478ebaea4e47eca82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1328467496}
 --- !u!114 &1359062806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +599,19 @@ MonoBehaviour:
   players:
   - {fileID: 1580195745}
   current: 0
+--- !u!114 &1359062808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359062802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9349eeff6bb3a40fea56417078ab422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1328467496}
 --- !u!1 &1501846539
 GameObject:
   m_ObjectHideFlags: 0

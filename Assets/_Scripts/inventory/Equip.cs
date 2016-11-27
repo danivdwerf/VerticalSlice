@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Equip : MonoBehaviour
 {
-    //private Dequip dequip;
+    private Dequip dequip;
     private CurrentPlayer currentPlayer;
     private void Start()
     {
-        //dequip = GetComponent<Dequip>();
+        dequip = GetComponent<Dequip>();
         currentPlayer = GetComponent<CurrentPlayer>();
     }
 
@@ -16,6 +16,6 @@ public class Equip : MonoBehaviour
         GameObject player =  currentPlayer.currentSelectedPlayer();
 		GameObject newGameobject =  Instantiate(weapon, player.transform.position, Quaternion.identity) as GameObject;
         newGameobject.transform.parent = player.transform;
-        //dequip.dequipLastWapon(newGameobject);      
+        dequip.dequipLastWapon(newGameobject);      
     }
 }
