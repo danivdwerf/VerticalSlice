@@ -10,6 +10,7 @@ public class Select : MonoBehaviour {
 
     private void Start()
     {
+        //get script
         equip = gameObject.GetComponent<Equip>();
     }
 

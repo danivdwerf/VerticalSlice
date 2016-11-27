@@ -13,6 +13,7 @@ public class Dequip : MonoBehaviour {
             //destroy the prevois gameobject
             Destroy(previosAdd);
         }
+        // set new game object as previos gameobject
         previosAdd = gameobj;
     }
 }
