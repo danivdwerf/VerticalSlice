@@ -11,12 +11,12 @@ public class BazookaShoot : MonoBehaviour
 	private void Start()
 	{
 		shooting = false;
-		maxTime = 2f;
+		maxTime = 1f;
 	}
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space)&&!shooting)
 		{
 			shooting = true;
 		}
@@ -29,11 +29,11 @@ public class BazookaShoot : MonoBehaviour
 	private void updateShooting()
 	{
 		curTime += Time.deltaTime;
-		if (Input.GetKeyUp (KeyCode.Space))
+		if (curTime >= maxTime&&shooting)
 		{
 			shoot ();
 		}
-		if (curTime >= maxTime)
+		if (Input.GetKeyUp (KeyCode.Space)&&shooting)
 		{
 			shoot ();
 		}
@@ -41,9 +41,10 @@ public class BazookaShoot : MonoBehaviour
 
 	private void shoot ()
 	{
-		shooting = false;
+		GameObject bullet = Instantiate(projectile,muzzle.position,muzzle.rotation)as GameObject;
+		bullet.GetComponent<ProjectileMovement> ().Settime = (curTime/maxTime);
 		curTime = 0;
-		GameObject bullet = Instantiate(projectile,muzzle.position,Quaternion.Euler(this.transform.localEulerAngles))as GameObject;
+		shooting = false;
 		return;
 	}
 }

@@ -4,14 +4,23 @@ using System.Collections;
 public class ProjectileMovement : MonoBehaviour 
 {
 	private float speed;
+	private float time;
+	public float Settime
+	{
+		set 
+		{ 
+			time = value;
+		}
+	}
 	private Rigidbody2D rigid;
 	private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D> ();
-		speed = 20f;
+		speed = 50f;
+		Vector3 direction = new Vector3 ();
 	}
 	private void Update()
 	{
-		rigid.AddForce (transform.right * speed*Time.deltaTime);
+		rigid.velocity = transform.right * speed * time *Time.deltaTime;
 	}
 }
