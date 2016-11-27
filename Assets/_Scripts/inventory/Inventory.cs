@@ -5,10 +5,10 @@ using UnityEditor;
 public class Inventory : MonoBehaviour 
 {
 	[SerializeField]private GameObject[] weapons;
-	private Equip equipWeapon;
+	private EquipWeapon equipWeapon;
 	private void Start()
 	{
-		equipWeapon = GetComponent<Equip> ();
+		equipWeapon = GetComponent<EquipWeapon> ();
 	}
 	public void SelectWeapon(int weaponIndex)
 	{
