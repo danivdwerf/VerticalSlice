@@ -4,14 +4,20 @@ using System.Collections;
 public class PlayerInput : MonoBehaviour 
 {
 	private PlayerMovement movement;
+	private InventoryUI inventoryUI;
 	private float speed;
 	private void Start()
 	{
-		speed = 50f;
+		speed = 0.3f;
 		movement = GetComponent<PlayerMovement>(); 
+		inventoryUI = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<InventoryUI> ();
 	}
 	private void Update()
 	{
+		if (Input.GetMouseButtonDown (1))
+		{
+			inventoryUI.showInventory ();
+		}
 		if (Input.GetKeyDown (KeyCode.RightArrow))
 		{
 			movement.SetSpeed = speed;

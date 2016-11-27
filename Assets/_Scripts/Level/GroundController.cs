@@ -4,7 +4,9 @@ using UnityEditor;
 public class GroundController : MonoBehaviour 
 {
 	private SpriteRenderer sr;
+	private PolygonCollider2D col;
 	private Color hole; 
+	private CreateLevelCollider createCol;
 	private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
 
@@ -12,6 +14,7 @@ public class GroundController : MonoBehaviour
 	{
 		//reference to sprite renderer
 		sr = GetComponent<SpriteRenderer>(); 
+		createCol = GetComponent<CreateLevelCollider> ();
 		//Load in the texture
 		string path = "Assets/Sprites/Level/Worms_level.png";
 		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(path,typeof(Texture2D));
@@ -23,6 +26,7 @@ public class GroundController : MonoBehaviour
 		hole = new Color(0f, 0f, 0f, 0f);
 		//Set the properties according to the sizes of the new sprite 
 		SetDimensions();
+		createCol.SetCollider ();
 		//let the bullet know what the ground is
 		BulletController.groundController = this;
 	}

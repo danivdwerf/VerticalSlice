@@ -2,30 +2,24 @@
 using System.Collections;
 
 public class CurrentPlayer : MonoBehaviour
-{
-    
-    [SerializeField]
-    private GameObject[] players;
-    [SerializeField]
-    private int Current = 0;
+{  
+    [SerializeField]private GameObject[] players;
+    [SerializeField]private int current = 0;
 
-   
-	
-	
 	public GameObject currentSelectedPlayer()
     {        
-        return players[Current];
+        return players[current];
     }
 
     public void nextPlayer()
     {
-        if(Current < players.Length - 1)
+        if(current < players.Length - 1)
         {
-            Current++;
+            current++;
         }
         else
         {
-            Current = 0;
+            current = 0;
         }
     }
 }
