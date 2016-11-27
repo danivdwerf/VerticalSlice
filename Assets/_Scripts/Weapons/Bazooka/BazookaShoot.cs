@@ -3,7 +3,8 @@ using System.Collections;
 
 public class BazookaShoot : MonoBehaviour 
 {
-	//private GameObject bullet;
+	[SerializeField]private GameObject projectile;
+	[SerializeField]private Transform muzzle;
 	private float maxTime;
 	private float curTime;
 	private bool shooting;
@@ -40,9 +41,9 @@ public class BazookaShoot : MonoBehaviour
 
 	private void shoot ()
 	{
-		Debug.Log ("Shoot");
 		shooting = false;
 		curTime = 0;
+		GameObject bullet = Instantiate(projectile,muzzle.position,Quaternion.Euler(this.transform.localEulerAngles))as GameObject;
 		return;
 	}
 }

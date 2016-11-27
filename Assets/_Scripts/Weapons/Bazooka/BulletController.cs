@@ -3,14 +3,17 @@ using System.Collections;
 
 public class BulletController : MonoBehaviour 
 {
-	public CircleCollider2D destructionCircle;
 	public static GroundController groundController;
-
+	private CircleCollider2D circle;
+	private void Start()
+	{
+		circle = GetComponent<CircleCollider2D> ();
+	}
 	void OnCollisionEnter2D( Collision2D coll )
 	{
 		if( coll.collider.tag == "Ground" )
 		{
-			groundController.DestroyGround( destructionCircle );
+			groundController.DestroyGround(circle);
 			Destroy(gameObject);
 		}
 	}
