@@ -61,11 +61,11 @@ public class PlayerMovement : MonoBehaviour
 		anim.SetFloat ("Walk", Mathf.Abs (rigid.velocity.x));
 		if (rigid.velocity.x > 0 && transform.localScale.x < 0)
 		{
-			transform.localScale = new Vector3 (1,1,1);
+			transform.GetComponentInChildren<Transform> ().localScale = new Vector3 (1,1,1);
 		}
 		else if(rigid.velocity.x <0&& transform.localScale.x>0)
 		{
-			transform.localScale = new Vector3 (-1,1,1);
+			transform.GetComponentInChildren<Transform> ().localScale = new Vector3 (-1,1,1);
 		}
 	}
 }

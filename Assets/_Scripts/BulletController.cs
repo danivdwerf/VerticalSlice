@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Classe responsável pelo código que controla a nossa bala
 public class BulletController : MonoBehaviour 
 {
 	public CircleCollider2D destructionCircle;
