@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013688731910}
+  - 114: {fileID: 114000011644942964}
   m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
@@ -84,6 +85,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1000011397065014, guid: 6ebb45499372a4c37898ffad8b1d71d9, type: 2}
   muzzle: {fileID: 4000013688731910}
+--- !u!114 &114000011644942964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011314899502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4333e7cafb0474364a94ca2a58cb5411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012503142892
 MonoBehaviour:
   m_ObjectHideFlags: 1

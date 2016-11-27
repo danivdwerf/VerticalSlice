@@ -17,7 +17,6 @@ public class ProjectileMovement : MonoBehaviour
 	{
 		rigid = GetComponent<Rigidbody2D> ();
 		speed = 50f;
-		Vector3 direction = new Vector3 ();
 	}
 	private void Update()
 	{

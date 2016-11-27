@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BazookaAiming : MonoBehaviour 
 {
-	private Transform thisTransform;
 	private float angle;
 	private float maxAngle;
 	private void Start()
@@ -27,7 +26,6 @@ public class BazookaAiming : MonoBehaviour
 
 	private void updateAim(int angleNum)
 	{
-		thisTransform = this.transform;
 		this.transform.localEulerAngles = new Vector3 (0,0,angle);
 		angle+=angleNum;
 	}
