@@ -20,10 +20,11 @@ public class EquipWeapon : MonoBehaviour
         //get selected player
         GameObject player =  currentPlayer.currentSelectedPlayer();
         //set selected game object on player
-		GameObject newGameobject =  Instantiate(weapon, player.transform.position, Quaternion.identity) as GameObject; 
+		GameObject newGameobject =  Instantiate(weapon, player.transform.position, player.transform.rotation) as GameObject; 
 		//make new weapn a child of the player
         newGameobject.transform.parent = player.transform;
         //dequip last wapon
-        dequip.dequipLastWapon(newGameobject);      
+        dequip.dequipLastWapon(newGameobject);
+            
     }
 }
