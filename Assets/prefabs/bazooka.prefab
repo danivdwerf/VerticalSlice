@@ -38,6 +38,7 @@ GameObject:
   - 212: {fileID: 212000013068363520}
   - 114: {fileID: 114000012503142892}
   - 114: {fileID: 114000010691499332}
+  - 114: {fileID: 114000010268642238}
   m_Layer: 0
   m_Name: bazooka
   m_TagString: Untagged
@@ -72,6 +73,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013342058640}
   m_RootOrder: 0
+--- !u!114 &114000010268642238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011397511144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c6a17adad874d6792c11e938a322dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010691499332
 MonoBehaviour:
   m_ObjectHideFlags: 1

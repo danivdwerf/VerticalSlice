@@ -12,7 +12,7 @@ public class PlayerGravity : MonoBehaviour
 	}
 	private void Update()
 	{
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,1f); 
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down,0.5f); 
 		if (hit.collider)
 		{
 			if (hit.collider.tag == Tags.ground)

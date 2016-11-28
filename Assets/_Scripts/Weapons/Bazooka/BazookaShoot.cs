@@ -5,35 +5,24 @@ public class BazookaShoot : MonoBehaviour
 {
 	[SerializeField]private GameObject projectile;
 	[SerializeField]private Transform muzzle;
+	private BazookaInput inputScript;
 	private float maxTime;
 	private float curTime;
-	private bool shooting;
 	private void Start()
 	{
-		shooting = false;
+		inputScript = GetComponent<BazookaInput> ();
+		inputScript.GetShooting  = false;
 		maxTime = 1f;
 	}
 
-	private void Update()
-	{
-		if (Input.GetKey(KeyCode.Space)&&!shooting)
-		{
-			shooting = true;
-		}
-		if(shooting)
-		{
-			updateShooting ();
-		}
-	}
-
-	private void updateShooting()
+	public void updateShooting()
 	{
 		curTime += Time.deltaTime;
-		if (curTime >= maxTime&&shooting)
+		if (curTime >= maxTime&&inputScript.GetShooting)
 		{
 			shoot ();
 		}
-		if (Input.GetKeyUp (KeyCode.Space)&&shooting)
+		if (Input.GetKeyUp (KeyCode.Space)&&inputScript.GetShooting)
 		{
 			shoot ();
 		}
@@ -44,7 +33,8 @@ public class BazookaShoot : MonoBehaviour
 		GameObject bullet = Instantiate(projectile,muzzle.position,muzzle.rotation)as GameObject;
 		bullet.GetComponent<ProjectileMovement> ().Settime = (curTime/maxTime);
 		curTime = 0;
-		shooting = false;
+		inputScript.GetShooting = false;
+		Destroy (this.gameObject);
 		return;
 	}
 }

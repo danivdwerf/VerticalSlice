@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour
 		for (int i = 0; i < buttons.Length; i++)
 		{
 			int temp = i;
-			buttons[i].onClick.AddListener (delegate(){inventory.SelectWeapon(temp);});
+			buttons[i].onClick.AddListener (delegate(){inventory.SelectWeapon(temp);hideInventory();});
 		}
 	}
 
