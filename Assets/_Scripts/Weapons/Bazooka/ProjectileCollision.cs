@@ -4,7 +4,6 @@ using System.Collections;
 public class ProjectileCollision : MonoBehaviour 
 {
 	[SerializeField]private GameObject circle;
-	private static GroundController groundController; 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag (Tags.ground))
