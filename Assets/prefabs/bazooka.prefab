@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000011397511144}
   m_IsPrefabParent: 1
+--- !u!1 &1000011314899502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013688731910}
+  - 114: {fileID: 114000011644942964}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011397511144
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,6 +37,7 @@ GameObject:
   - 4: {fileID: 4000013342058640}
   - 212: {fileID: 212000013068363520}
   - 114: {fileID: 114000012503142892}
+  - 114: {fileID: 114000010691499332}
   m_Layer: 0
   m_Name: bazooka
   m_TagString: Untagged
@@ -38,21 +55,58 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000013688731910}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &4000013688731910
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011314899502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013342058640}
+  m_RootOrder: 0
+--- !u!114 &114000010691499332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011397511144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc73edaf076541a4814e980083cdc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1000011397065014, guid: 6ebb45499372a4c37898ffad8b1d71d9, type: 2}
+  muzzle: {fileID: 4000013688731910}
+--- !u!114 &114000011644942964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011314899502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4333e7cafb0474364a94ca2a58cb5411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012503142892
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011397511144}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52b31620286024f309edef2d886fb228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyTransform: {fileID: 0}
 --- !u!212 &212000013068363520
 SpriteRenderer:
   m_ObjectHideFlags: 1
