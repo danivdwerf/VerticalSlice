@@ -17,10 +17,8 @@ public class ProjectileMovement : MonoBehaviour
 	private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D> ();
-		speed = 100f;
-	}
-	private void Update()
-	{
-		rigid.velocity = transform.right * speed * time *Time.deltaTime;
+		speed = 4f;
+
+		rigid.AddForce (transform.right * speed * time, ForceMode2D.Impulse);
 	}
 }
