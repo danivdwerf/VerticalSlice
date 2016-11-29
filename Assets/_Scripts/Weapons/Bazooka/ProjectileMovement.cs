@@ -21,4 +21,10 @@ public class ProjectileMovement : MonoBehaviour
 
 		rigid.AddForce (transform.right * speed * time, ForceMode2D.Impulse);
 	}
+
+	private void Update()
+	{
+		float angle = Mathf.Atan2(rigid.velocity.y, rigid.velocity.x) * Mathf.Rad2Deg; 
+		this.transform.rotation = Quaternion.AngleAxis (angle,Vector3.forward);
+	}
 }
