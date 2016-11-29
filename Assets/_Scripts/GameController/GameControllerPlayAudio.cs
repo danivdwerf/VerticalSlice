@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControllerAudioHandle : MonoBehaviour 
+public class GameControllerPlayAudio : MonoBehaviour 
 {
 	private AudioSource source;
 	private void Start()
@@ -10,8 +10,11 @@ public class GameControllerAudioHandle : MonoBehaviour
 	}
 	public void PlayAudio(AudioClip clip,bool looping)
 	{
-		source.clip = clip;
-		source.loop = looping;
-		source.Play ();
+		if (clip != source.clip)
+		{
+			source.clip = clip;
+			source.loop = looping;
+			source.Play ();
+		}
 	}
 }

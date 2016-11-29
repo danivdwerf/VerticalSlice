@@ -6,7 +6,7 @@ public class ProjectileCollision : MonoBehaviour
 {
 	[SerializeField]private GameObject circle;
 	private AudioClip explosionSound;
-	private GameControllerAudioHandle audioHandler;
+	private GameControllerPlayAudio audioHandler;
 
 	private void Start()
 	{
@@ -16,7 +16,7 @@ public class ProjectileCollision : MonoBehaviour
 		{
 			Debug.LogError ("Explosion audioclip is null");
 		}
-		audioHandler = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerAudioHandle> ();
+		audioHandler = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerPlayAudio> ();
 	}
 	private void OnTriggerEnter2D(Collider2D other)
 	{
