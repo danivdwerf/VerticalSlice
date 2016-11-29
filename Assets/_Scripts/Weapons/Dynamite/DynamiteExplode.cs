@@ -3,7 +3,9 @@ using System.Collections;
 
 public class DynamiteExplode : MonoBehaviour {
     [SerializeField]
-    private GameObject circle;   
+    private GameObject circle; 
+
+
     //detonate the dynamyte
     public void detonate()
     {
