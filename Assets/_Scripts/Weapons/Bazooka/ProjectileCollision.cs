@@ -4,17 +4,19 @@ using UnityEditor;
 
 public class ProjectileCollision : MonoBehaviour 
 {
-	[SerializeField]private GameObject circle;
 	private AudioClip explosionSound;
 	private GameControllerPlayAudio audioHandler;
+	private CreateLevelDestroyer levelDestroyer;
 
 	private void Start()
 	{
+		levelDestroyer = GetComponent<CreateLevelDestroyer> ();
 		string audioPath = "Assets/Audio/Effects/Explosion3.wav";
 		explosionSound = (AudioClip)AssetDatabase.LoadAssetAtPath (audioPath,typeof(AudioClip));
 		if (!explosionSound)
 		{
-			Debug.LogError ("Explosion audioclip is null");
+			Debug.LogError ("Explosion audioclip is null!");
+			return;
 		}
 		audioHandler = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerPlayAudio> ();
 	}
@@ -22,14 +24,8 @@ public class ProjectileCollision : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag (Tags.ground))
 		{
-			groundHit ();
+			levelDestroyer.groundHit ();
+			audioHandler.PlayAudio (explosionSound,false);
 		}
-	}
-
-	private void groundHit()
-	{
-		GameObject destroyGround = Instantiate (circle,this.transform.position,Quaternion.identity)as GameObject;
-		audioHandler.PlayAudio (explosionSound,false);
-		Destroy(gameObject);
 	}
 }
