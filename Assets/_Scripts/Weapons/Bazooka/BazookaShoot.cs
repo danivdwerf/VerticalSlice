@@ -1,52 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
-
+//Shoot a projectie\\
 public class BazookaShoot : MonoBehaviour 
 {
-	[SerializeField]private GameObject projectile;
-	[SerializeField]private Transform muzzle;
-	private GameControllerPlayAudio playAudio;
-	private BazookaInput inputScript;
-	private AudioClip shootClip;
-	private AudioClip chargeClip;
-	private float maxTime;
-	private float curTime;
+	//Create reference to the projectile.\\
+	private GameObject projectile{get;set;}
+	//Create reference to the muzzle.\\
+	private Transform muzzle{get;set;}
+	//Create reference to the audioHandler.\\
+	private GameControllerPlayAudio playAudio{get;set;}
+	//Create reference to the inputScript.\\
+	private BazookaInput inputScript{get;set;}
+	//Create reference to the shooting audioclip.\\
+	private AudioClip shootClip{get;set;}
+
 
 	private void Start()
 	{
+		//Set the path of the Projectile.\\
+		string projectilePath = "Assets/prefabs/BazookaProjectile.prefab";
+		//Load in the projectile.\\
+		projectile = (GameObject)AssetDatabase.LoadAssetAtPath (projectilePath,typeof(GameObject));
+		//Check if loading succeeded.\\
+		if(!projectile)
+		{
+			//Throw error.\\
+			Debug.LogError ("The GameObject Projectile is null! Did you use the correct path?");
+			return;
+		}
+		//Set the path of the audioclip.\\
+		string shootPath = "Assets/Audio/Effects/RocketRelease.wav";
+		//Load in the audioclip.\\
+		shootClip = (AudioClip)AssetDatabase.LoadAssetAtPath (shootPath,typeof(AudioClip));
+		//Check if loading succeeded.\\
+		if (!shootClip)
+		{
+			//Throw error.\\
+			Debug.LogError ("The shooting audioclip is null! Did you use the correct path?");
+			return;
+		}
+		//create refferences to the scripts.\\
 		inputScript = GetComponent<BazookaInput> ();
 		playAudio = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerPlayAudio> ();
-		string shootPath = "Assets/Audio/Effects/RocketRelease.wav";
-		shootClip = (AudioClip)AssetDatabase.LoadAssetAtPath (shootPath,typeof(AudioClip));
-		string chargePath = "Assets/Audio/Effects/RocketPowerup.wav";
-		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (chargePath,typeof(AudioClip));
+		//Create reference to the muzzle transform.\\
+		muzzle = this.transform.GetChild(0).GetComponent<Transform>();
+		//Set shooting to false.\\
 		inputScript.GetShooting  = false;
-		maxTime = (chargeClip.length/chargeClip.length);
 	}
-
-	public void updateShooting()
+	//Shoot a projectile.\\
+	public void shoot (float shootPower)
 	{
-		curTime += Time.deltaTime;
-		playAudio.PlayAudio (chargeClip, false);
-		if (curTime >= maxTime&&inputScript.GetShooting)
-		{
-			shoot ();
-		}
-		if (Input.GetKeyUp (KeyCode.Space)&&inputScript.GetShooting)
-		{
-			shoot ();
-		}
-	}
-
-	private void shoot ()
-	{
-		GameObject bullet = Instantiate(projectile,muzzle.position,muzzle.rotation)as GameObject;
-		bullet.GetComponent<ProjectileMovement> ().Settime = (curTime/maxTime);
+		//Instantiate a projectile.\\
+		GameObject bullet = Instantiate(projectile) as GameObject;
+		//Set the instantiating position.\\
+		bullet.transform.position = muzzle.position;
+		//Set instantiating rotation.\\
+		bullet.transform.rotation = muzzle.rotation;
+		//Set the shooting power of the projectile.\\
+		bullet.GetComponent<ProjectileMovement> ().Settime = shootPower;
+		//Play the shooting audio.\\
 		playAudio.PlayAudio (shootClip,false);
-		curTime = 0;
+		//Set shooting to false.\\
 		inputScript.GetShooting = false;
+		//Unequip weapon.\\
 		Destroy (this.gameObject);
-		return;
 	}
 }
