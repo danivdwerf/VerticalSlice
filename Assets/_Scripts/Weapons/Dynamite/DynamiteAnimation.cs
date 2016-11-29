@@ -7,7 +7,7 @@ public class DynamiteAnimation : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponentInChildren<Animator>();
 	}
 
     //start animation
