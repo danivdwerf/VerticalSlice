@@ -4,6 +4,7 @@ using System.Collections;
 public class ProjectileMovement : MonoBehaviour 
 {
 	private float speed;
+	private float gravity;
 	private float time;
 	public float Settime
 	{
@@ -16,7 +17,7 @@ public class ProjectileMovement : MonoBehaviour
 	private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D> ();
-		speed = 50f;
+		speed = 100f;
 	}
 	private void Update()
 	{

@@ -5,6 +5,7 @@ using UnityEditor;
 public class ProjectileCollision : MonoBehaviour 
 {
 	[SerializeField]private GameObject circle;
+<<<<<<< HEAD
 	private AudioClip explosionSound;
 	private GameControllerAudioHandle audioHandler;
 
@@ -18,6 +19,8 @@ public class ProjectileCollision : MonoBehaviour
 		}
 		audioHandler = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerAudioHandle> ();
 	}
+=======
+>>>>>>> 4d5c2842b4cbad5cdde6f65ec428b0cba13ddb56
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag (Tags.ground))
