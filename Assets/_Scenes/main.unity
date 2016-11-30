@@ -700,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 1000011397511144, guid: ef154a4618cd4d443b5861abe7b54510, type: 2}
-  - {fileID: 1000012965657464, guid: 107c3bbcdb8ce96409dd46bef938ff28, type: 2}
+  - {fileID: 0}
 --- !u!4 &1359062804
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,7 +1218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 0
 --- !u!1 &1614154662
 GameObject:
   m_ObjectHideFlags: 0
