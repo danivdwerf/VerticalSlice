@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: wapon
+    uniqueID: 757995093
+    locked: 0
+  - name: hand
+    uniqueID: 1728719643
+    locked: 0

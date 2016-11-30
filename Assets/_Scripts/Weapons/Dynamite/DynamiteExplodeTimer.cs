@@ -28,7 +28,7 @@ public class DynamiteExplodeTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > timeToDetonate - 1 && !animationStarted && timerStarted)
+        if(Time.time > timeToDetonate - 0.4f && !animationStarted && timerStarted)
         {
             dynaAnimation.startDetonateAnimatio();
             animationStarted = true;
