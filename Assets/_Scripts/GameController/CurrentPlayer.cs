@@ -6,20 +6,28 @@ public class CurrentPlayer : MonoBehaviour
     [SerializeField]private GameObject[] players;
     [SerializeField]private int current = 0;
 
-	public GameObject currentSelectedPlayer()
+    private Timer timer;
+
+    void Start()
+    {
+        timer = GetComponent<Timer>();
+    }
+
+    public GameObject currentSelectedPlayer()
     {        
         return players[current];
     }
 
     public void nextPlayer()
     {
-        if(current < players.Length - 1)
+        if(current < players.Length && timer.timeLeft <= 1.0f)
         {
             current++;
         }
-        else
+        /*else
         {
             current = 0;
-        }
+        }*/
+        Debug.Log(players);
     }
 }
