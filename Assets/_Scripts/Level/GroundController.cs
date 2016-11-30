@@ -28,7 +28,7 @@ public class GroundController : MonoBehaviour
 		SetDimensions();
 		createCol.SetCollider ();
 		//let the bullet know what the ground is
-		BulletController.groundController = this;
+		DestroyLevel.groundController = this;
 	}
 
 	private void SetDimensions() 
