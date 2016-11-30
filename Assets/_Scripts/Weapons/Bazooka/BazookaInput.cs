@@ -92,7 +92,7 @@ public class BazookaInput : MonoBehaviour
 		//While chargin, increase the current charging time.\\
 		curTime += Time.deltaTime;
 		//Play the charging audio clip.\\
-		playAudio.PlayAudio (chargeClip, false);
+	
 		//If you charge it for the full charging clip...\\
 		if (curTime >= maxTime&&shooting)
 		{
