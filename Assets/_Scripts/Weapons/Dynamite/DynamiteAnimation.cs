@@ -9,6 +9,10 @@ public class DynamiteAnimation : MonoBehaviour {
     {
         animator = gameObject.GetComponentInChildren<Animator>();
 	}
+    public void startVuse()
+    {
+        animator.SetBool("drop", true);
+    }
 
     //start animation
     public void startDetonateAnimatio()
