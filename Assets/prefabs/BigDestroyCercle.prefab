@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012817325508}
   - 58: {fileID: 58000012285082294}
-  - 114: {fileID: 114000013516463022}
   - 50: {fileID: 50000013226577512}
+  - 114: {fileID: 114000011107851014}
   m_Layer: 0
   m_Name: BigDestroyCercle
   m_TagString: Untagged
@@ -73,7 +73,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.11
---- !u!114 &114000013516463022
+--- !u!114 &114000011107851014
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -81,6 +81,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012170416904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7baf5d272d7480ba57b05e5334644a, type: 3}
+  m_Script: {fileID: 11500000, guid: ad52af4bdd06a2a47a0ff6f9e4de325d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
