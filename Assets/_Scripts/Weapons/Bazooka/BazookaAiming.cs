@@ -14,10 +14,6 @@ public class BazookaAiming : MonoBehaviour
 		angle = 0f;
 		maxAngle = 50f;
 	}
-	private void Update()
-	{
-
-	}
 
 	//Update the aiming rotation.\\
 	public void updateAim(int angleNum)

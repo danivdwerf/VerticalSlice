@@ -12,18 +12,13 @@ public class CloudController : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		animEvent = new AnimationEvent ();
 		clip = this.anim.runtimeAnimatorController.animationClips [0];
-		addEvent ();
+		StartCoroutine ("checkLifetime");
 	}
 
-	public void deleteObject()
+	IEnumerator checkLifetime()
 	{
+		yield return new WaitForSeconds (clip.length);
 		Destroy (gameObject);
 	}
 
-	private void addEvent()
-	{
-		animEvent.functionName = "deleteObject";
-		animEvent.time = clip.length;
-		clip.AddEvent (animEvent);
-	}
 }

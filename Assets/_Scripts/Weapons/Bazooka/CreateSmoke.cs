@@ -2,14 +2,13 @@
 using System.Collections;
 using UnityEditor;
 
-public class ProjectileSprites : MonoBehaviour 
+public class CreateSmoke : MonoBehaviour 
 {
 	private GameObject smokeCloud;
 
 	private void Start()
 	{
-		string smokePath = "Assets/prefabs/Smoke.prefab";
-		smokeCloud = (GameObject)AssetDatabase.LoadAssetAtPath (smokePath,typeof(GameObject));
+		smokeCloud = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.smokePath,typeof(GameObject));
 		if (!smokeCloud)
 		{
 			Debug.LogError ("SmokeCloud is NULL!!");

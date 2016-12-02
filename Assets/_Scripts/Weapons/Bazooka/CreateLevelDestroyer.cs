@@ -11,21 +11,10 @@ public class CreateLevelDestroyer : MonoBehaviour
 
 	private void Start()
 	{
-		//The path to the circle GameObject.\\
-		string circlePath="Assets/prefabs/BazookaExplosionRange.prefab";
 		//Load in the GameObject.\\
-		circle = (GameObject)AssetDatabase.LoadAssetAtPath (circlePath,typeof(GameObject));
+		circle = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.bazookadestructionPath,typeof(GameObject));
 		//Check if the loading succeeded.\\
 		if (!circle)
-		{
-			Debug.LogError ("Explosion circle is null!");
-		}
-		//The path to the explosion GameObject.\\
-		string explosionPath="Assets/prefabs/Explosion.prefab";
-		//Load in the GameObject.\\
-		explosion = (GameObject)AssetDatabase.LoadAssetAtPath (explosionPath,typeof(GameObject));
-		//Check if the loading succeeded.\\
-		if (!explosion)
 		{
 			Debug.LogError ("Explosion circle is null!");
 		}

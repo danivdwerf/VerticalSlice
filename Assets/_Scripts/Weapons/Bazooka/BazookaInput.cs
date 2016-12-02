@@ -39,10 +39,8 @@ public class BazookaInput : MonoBehaviour
 
 	private void Start()
 	{
-		//Set path for the charging audioclip.\\
-		string chargePath = "Assets/Audio/Effects/RocketPowerup.wav";
 		//Load the audioclip.\\
-		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (chargePath,typeof(AudioClip));
+		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.chargingAudioPath,typeof(AudioClip));
 		//Check if the loading succeeded.\\
 		if (!chargeClip)
 		{
