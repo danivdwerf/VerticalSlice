@@ -260,50 +260,6 @@ Prefab:
       propertyPath: m_Name
       value: FallingStars
       objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: EmissionModule.rate.scalar
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: SizeModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: SizeModule.curve.maxCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.97849464
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012589875470, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000011450298562, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb,
-        type: 2}
-      propertyPath: prewarm
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 073c1fcb5bf164fd3ab46a5a84f8afbb, type: 2}
   m_IsPrefabParent: 0
@@ -655,7 +611,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 0
+  m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -679,7 +635,6 @@ GameObject:
   - 114: {fileID: 1359062808}
   - 114: {fileID: 1359062805}
   - 82: {fileID: 1359062809}
-  - 114: {fileID: 1359062810}
   m_Layer: 0
   m_Name: Gamecontroller
   m_TagString: GameController
@@ -839,17 +794,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1359062810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359062802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1328c4993a15246fd88b35e7f9ad8db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1501846539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,10 +1015,9 @@ GameObject:
   - 50: {fileID: 1580195746}
   - 58: {fileID: 1580195747}
   - 114: {fileID: 1580195753}
-  - 114: {fileID: 1580195754}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,7 +1093,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580195745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.93, z: 0}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1206,18 +1149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d16946edd0f940f988fa62000912185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1580195754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580195745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475186ae7bdfe8c4f852ddc4585615a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
 --- !u!1 &1614154662
 GameObject:
   m_ObjectHideFlags: 0
