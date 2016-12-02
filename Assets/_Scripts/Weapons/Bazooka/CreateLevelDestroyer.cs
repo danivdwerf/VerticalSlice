@@ -6,6 +6,8 @@ public class CreateLevelDestroyer : MonoBehaviour
 {
 	//Create reference to the cirlce.\\
 	private GameObject circle{get;set;}
+	//Create reference to the explosion GameObject.\\
+	private GameObject explosion{ get; set;}
 
 	private void Start()
 	{
@@ -15,6 +17,15 @@ public class CreateLevelDestroyer : MonoBehaviour
 		circle = (GameObject)AssetDatabase.LoadAssetAtPath (circlePath,typeof(GameObject));
 		//Check if the loading succeeded.\\
 		if (!circle)
+		{
+			Debug.LogError ("Explosion circle is null!");
+		}
+		//The path to the explosion GameObject.\\
+		string explosionPath="Assets/prefabs/Explosion.prefab";
+		//Load in the GameObject.\\
+		explosion = (GameObject)AssetDatabase.LoadAssetAtPath (explosionPath,typeof(GameObject));
+		//Check if the loading succeeded.\\
+		if (!explosion)
 		{
 			Debug.LogError ("Explosion circle is null!");
 		}

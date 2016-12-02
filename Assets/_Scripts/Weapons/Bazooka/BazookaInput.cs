@@ -15,6 +15,8 @@ public class BazookaInput : MonoBehaviour
 	//Create reference to the aimingScript.\\
 	private BazookaAiming aiming{get;set;}
 
+	private BazookaAimUi uiScript{ get; set;}
+
 	//Create variable for maximal charging time.\\
 	private float maxTime{get;set;}
 	//Create variable for the current charging time.\\
