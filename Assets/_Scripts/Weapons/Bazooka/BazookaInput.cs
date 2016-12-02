@@ -15,6 +15,8 @@ public class BazookaInput : MonoBehaviour
 	//Create reference to the aimingScript.\\
 	private BazookaAiming aiming{get;set;}
 
+	private BazookaAimUi uiScript{ get; set;}
+
 	//Create variable for maximal charging time.\\
 	private float maxTime{get;set;}
 	//Create variable for the current charging time.\\
@@ -37,10 +39,8 @@ public class BazookaInput : MonoBehaviour
 
 	private void Start()
 	{
-		//Set path for the charging audioclip.\\
-		string chargePath = "Assets/Audio/Effects/RocketPowerup.wav";
 		//Load the audioclip.\\
-		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (chargePath,typeof(AudioClip));
+		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.chargingAudioPath,typeof(AudioClip));
 		//Check if the loading succeeded.\\
 		if (!chargeClip)
 		{
