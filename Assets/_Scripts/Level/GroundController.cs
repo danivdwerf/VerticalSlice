@@ -25,8 +25,7 @@ public class GroundController : MonoBehaviour
 		//make a transparant colour(Color.clear would also work, but now you kind of make it yourself)
 		hole = new Color(0f, 0f, 0f, 0f);
 		//Set the properties according to the sizes of the new sprite 
-		SetDimensions();
-		createCol.SetCollider ();
+		SetDimensions(); 
 		//let the bullet know what the ground is
 		DestroyLevel.groundController = this;
 	}

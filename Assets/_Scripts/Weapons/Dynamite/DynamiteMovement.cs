@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//moet raycast van maken
+//laat de dynamite vallen tot hij de grond raakt.
 public class DynamiteMovement : MonoBehaviour
 {
     [SerializeField]
