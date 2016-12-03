@@ -8,9 +8,6 @@ public class PlayerMovement : MonoBehaviour
 	private bool jump;
 
 	private float speed;
-    private float jumpSpeed;
-
-
 	public float SetSpeed
 	{
 		set
@@ -18,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 			speed = value;
 		}
 	}
+	private float jumpSpeed;
     public float SetJumpSpeed
     {
         set

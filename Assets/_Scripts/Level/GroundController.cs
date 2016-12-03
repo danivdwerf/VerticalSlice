@@ -6,7 +6,7 @@ public class GroundController : MonoBehaviour
 	private SpriteRenderer sr;
 	private PolygonCollider2D col;
 	private Color hole; 
-	private CreateLevelCollider createCol;
+	//private CreateLevelCollider createCol;
 	private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
 
@@ -14,7 +14,7 @@ public class GroundController : MonoBehaviour
 	{
 		//reference to sprite renderer
 		sr = GetComponent<SpriteRenderer>(); 
-		createCol = GetComponent<CreateLevelCollider> ();
+		//createCol = GetComponent<CreateLevelCollider> ();
 		//Load in the texture
 		string path = "Assets/Sprites/Level/Worms_level.png";
 		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(path,typeof(Texture2D));
