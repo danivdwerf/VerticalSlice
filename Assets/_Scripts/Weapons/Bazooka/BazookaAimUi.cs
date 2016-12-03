@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class BazookaAimUi : MonoBehaviour 
 {
-	private GameObject aimBar;
+	private Transform chargingBar;
 	private void Start()
 	{
-		string barPath = "Assets/Sprites/Aim.prefab";
-		aimBar = (GameObject)AssetDatabase.LoadAssetAtPath (barPath, typeof(GameObject));
-		if (!aimBar)
-		{
-			Debug.LogError ("Aimbar is null!");
-			return;
-		}
+		chargingBar = transform.GetChild(0).GetChild(0);
+		chargingBar.gameObject.SetActive (false);
 	}
 
-	public void updateSprite()
+	public void startCharging()
 	{
-		
+		chargingBar.gameObject.SetActive (true);
+	}
+
+	private void Update()
+	{
+		if(this.transform.parent.localScale.x<0)
+		{
+			chargingBar.localEulerAngles = new Vector3 (0, 0, 90);
+		}
+		if (this.transform.parent.localScale.x > 0)
+		{
+			chargingBar.localEulerAngles = new Vector3 (0, 0, -90);
+		}
 	}
 }

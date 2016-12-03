@@ -14,7 +14,7 @@ public class BazookaInput : MonoBehaviour
 	private AudioClip chargeClip{get;set;}
 	//Create reference to the aimingScript.\\
 	private BazookaAiming aiming{get;set;}
-
+	//Create reference to the aimingUIScript.\\
 	private BazookaAimUi uiScript{ get; set;}
 
 	//Create variable for maximal charging time.\\
@@ -52,6 +52,7 @@ public class BazookaInput : MonoBehaviour
 		inventoryUI = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<InventoryUI> ();
 		shootScript = GetComponent<BazookaShoot> ();
 		aiming = GetComponent<BazookaAiming> ();
+		uiScript = GetComponentInChildren<BazookaAimUi> ();
 
 		//Set the maximum charging time to the length of the charging Audioclip length.\\
 		maxTime = chargeClip.length;
@@ -76,6 +77,8 @@ public class BazookaInput : MonoBehaviour
 		{
 			//Shooting is true...\\
 			shooting = true;
+			//Start The chargin ui animation.\\
+			uiScript.startCharging();
 			//and the inventory should be closed.\\
 			inventoryUI.hideInventory ();
 		}
