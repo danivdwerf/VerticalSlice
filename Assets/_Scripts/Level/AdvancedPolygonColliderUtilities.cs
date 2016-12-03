@@ -1,33 +1,6 @@
 ﻿/*
 Advanced Polygon Collider (c) 2015 Digital Ruby, LLC
 http://www.digitalruby.com
-
-Source code may not be redistributed. Use in apps and games is fine.
-*/
-
-// This source code has been modified with great care from the farseer physics engine
-
-/* ORIGINAL LICENSE COMPLIANCE REQUIRES THE FOLLOWING BE POSTED:
-*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
 */
 
 using System;
@@ -58,15 +31,12 @@ namespace DigitalRuby.AdvancedPolygonCollider
 
             solids = new byte[colors.Length];
 
-            // calculate solids once, this makes tolerance lookups much faster
             for (int i = 0; i < solids.Length; i++)
             {
-                // Diff will be negative for visitable value, resulting in a sign multiply and value of 0.
-                // Sign multiply will be -1 for positive visitable values, resulting in non-zero value.
                 n = alphaTolerance - (int)(colors[i].a * 255.0f);
-                s = ((int)((n & 0x80000000) >> 31)) - 1; // sign multiplier is -1 for positive numbers and 0 for negative numbers
-                n = n * s * s; // multiply n by sign squared to get 0 for negative numbers (solid) and > zero for positive numbers (pass through)
-                solids[i] = (byte)n; // assign value back
+                s = ((int)((n & 0x80000000) >> 31)) - 1;
+                n = n * s * s;
+                solids[i] = (byte)n;
             }
 
             solidsLength = colors.Length;
@@ -95,7 +65,6 @@ namespace DigitalRuby.AdvancedPolygonCollider
                 Vertices polygon;
                 if (detectedPolygons.Count == 0)
                 {
-                    // First pass / single polygon
                     polygon = new Vertices(CreateSimplePolygon(Vector2.zero, Vector2.zero));
                     if (polygon.Count > 2)
                     {
@@ -104,7 +73,6 @@ namespace DigitalRuby.AdvancedPolygonCollider
                 }
                 else if (polygonEntrance.HasValue)
                 {
-                    // Multi pass / multiple polygons
                     polygon = new Vertices(CreateSimplePolygon(polygonEntrance.Value, new Vector2(polygonEntrance.Value.x - 1f, polygonEntrance.Value.y)));
                 }
                 else
@@ -127,7 +95,6 @@ namespace DigitalRuby.AdvancedPolygonCollider
                                 Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value, new Vector2(holeEntrance.Value.x + 1, holeEntrance.Value.y));
                                 if (holePolygon != null && holePolygon.Count > 2)
                                 {
-                                    // Add first hole polygon vertex to close the hole polygon.
                                     holePolygon.Add(holePolygon[0]);
                                     int vertex1Index, vertex2Index;
                                     if (SplitPolygonEdge(polygon, holeEntrance.Value, out vertex1Index, out vertex2Index))
@@ -148,7 +115,6 @@ namespace DigitalRuby.AdvancedPolygonCollider
                         }
                     }
                     while (true);
-
                     detectedPolygons.Add(polygon);
                 }
 
@@ -194,13 +160,7 @@ namespace DigitalRuby.AdvancedPolygonCollider
         {
             return (coord.x >= 0f && coord.x < width && coord.y >= 0f && coord.y < height);
         }
-
-        /// <summary>
-        /// Function to search for an entrance point of a hole in a polygon. It searches the polygon from top to bottom between the polygon edges.
-        /// </summary>
-        /// <param name="polygon">The polygon to search in.</param>
-        /// <param name="lastHoleEntrance">The last entrance point.</param>
-        /// <returns>The next holes entrance point. Null if ther are no holes.</returns>
+			
         private Vector2? SearchHoleEntrance(Vertices polygon, Vector2? lastHoleEntrance)
         {
             if (polygon == null)
@@ -222,57 +182,30 @@ namespace DigitalRuby.AdvancedPolygonCollider
             bool foundSolid;
             bool foundTransparent;
 
-            // Set start y coordinate.
             if (lastHoleEntrance.HasValue)
             {
-                // We need the y coordinate only.
                 startY = (int)lastHoleEntrance.Value.y;
             }
             else
             {
-                // Start from the top of the polygon if last entrance == null.
                 startY = (int)GetTopMostCoord(polygon);
             }
 
-            // Set the end y coordinate.
             endY = (int)GetBottomMostCoord(polygon);
 
             if (startY >= 0 && startY < height && endY > 0 && endY < height)
             {
-                // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
                 {
-                    // get x-coord of every polygon edge which crosses y
                     xCoords = SearchCrossingEdges(polygon, y);
-
-                    // We need an even number of crossing edges. 
-                    // It's always a pair of start and end edge: nothing | polygon | hole | polygon | nothing ...
-                    // If it's not then don't bother, it's probably a peak ...
-                    // ...which should be filtered out by SearchCrossingEdges() anyway.
                     if (xCoords.Count > 1 && xCoords.Count % 2 == 0)
                     {
-                        // Ok, this is short, but probably a little bit confusing.
-                        // This part searches from left to right between the edges inside the polygon.
-                        // The problem: We are using the polygon data to search in the texture data.
-                        // That's simply not accurate, but necessary because of performance.
                         for (int i = 0; i < xCoords.Count; i += 2)
                         {
                             foundSolid = false;
                             foundTransparent = false;
-
-                            // We search between the edges inside the polygon.
                             for (int x = (int)xCoords[i]; x <= (int)xCoords[i + 1]; x++)
                             {
-                                // First pass: IsSolid might return false.
-                                // In that case the polygon edge doesn't lie on the texture's solid pixel, because of the hull tolearance.
-                                // If the edge lies before the first solid pixel then we need to skip our transparent pixel finds.
-
-                                // The algorithm starts to search for a relevant transparent pixel (which indicates a possible hole) 
-                                // after it has found a solid pixel.
-
-                                // After we've found a solid and a transparent pixel (a hole's left edge) 
-                                // we search for a solid pixel again (a hole's right edge).
-                                // When found the distance of that coodrinate has to be greater then the hull tolerance.
 
                                 if (IsSolid(x, y))
                                 {
@@ -320,14 +253,10 @@ namespace DigitalRuby.AdvancedPolygonCollider
             if (polygon.Count < 3)
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
 
-            // Check the distance to main polygon.
             if (DistanceToHullAcceptable(polygon, point, higherDetail))
             {
-                // All distances are larger then _hullTolerance.
                 return true;
             }
-
-            // Default to false.
             return false;
         }
 
@@ -456,18 +385,8 @@ namespace DigitalRuby.AdvancedPolygonCollider
             result.Sort();
             return result;
         }
-
-        /// <summary>
-        /// Searches the polygon for the x coordinates of the edges that cross the specified y coordinate.
-        /// </summary>
-        /// <param name="polygon">Polygon to search in.</param>
-        /// <param name="y">Y coordinate to check for edges.</param>
-        /// <returns>Descending sorted list of x coordinates of edges that cross the specified y coordinate.</returns>
         private List<float> SearchCrossingEdges(Vertices polygon, int y)
         {
-            // sick-o-note:
-            // Used to search the x coordinates of edges in the polygon for a specific y coordinate.
-            // (Usualy comming from the texture data, that's why it's an int and not a float.)
 
             List<float> edges = new List<float>();
 

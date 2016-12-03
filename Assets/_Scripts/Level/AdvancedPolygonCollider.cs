@@ -1,69 +1,25 @@
 ﻿/*
 Advanced Polygon Collider (c) 2015 Digital Ruby, LLC
 http://www.digitalruby.com
-
-Source code may not be redistributed. Use in apps and games is fine.
 */
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
-
-#if UNITY_EDITOR
-
 using UnityEditor;
-
-#endif
 
 namespace DigitalRuby.AdvancedPolygonCollider
 {
     public struct PolygonParameters
     {
-        /// <summary>
-        /// Texture - must be readable and writeable.
-        /// </summary>
         public Texture2D Texture;
-
-        /// <summary>
-        /// Source rect from the texture containing the sprite.
-        /// </summary>
         public Rect Rect;
-
-        /// <summary>
-        /// Offset (pivot) for the sprite
-        /// </summary>
         public Vector2 Offset;
-
-        /// <summary>
-        /// X multiplier if pixels per unit are used, otherwise 1 (see UpdatePolygonCollider method).
-        /// </summary>
         public float XMultiplier;
-
-        /// <summary>
-        /// Y multiplier if pixels per unit are used, otherwise 1 (see UpdatePolygonCollider method).
-        /// </summary>
         public float YMultiplier;
-
-        /// <summary>
-        /// Alpha tolerance. Pixels with greater than this are considered solid.
-        /// </summary>
         public byte AlphaTolerance;
-
-        /// <summary>
-        /// Distance threshold to collapse vertices in pixels.
-        /// </summary>
         public int DistanceThreshold;
-
-        /// <summary>
-        /// True to decompose into convex polygons, false otherwise.
-        /// </summary>
         public bool Decompose;
-
-        /// <summary>
-        /// Whether to use the cache. Values will be cached accordingly.
-        /// </summary>
         public bool UseCache;
 
         public override int GetHashCode()
@@ -217,8 +173,6 @@ namespace DigitalRuby.AdvancedPolygonCollider
         [Tooltip("All the cached objects from the editor. Do not modify this data.")]
         [SerializeField]
         private List<CacheEntry> editorCache = new List<CacheEntry>();
-
-        // private readonly AdvancedPolygonColliderAutoGeometry geometryDetector = new AdvancedPolygonColliderAutoGeometry();
         private readonly TextureConverter geometryDetector = new TextureConverter();
 
 #if UNITY_EDITOR
