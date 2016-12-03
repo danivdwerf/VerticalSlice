@@ -85,8 +85,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!jump)
 		{
-			rigid.AddForce (Vector3.up * 3000000 * Time.deltaTime);
-			jump = true;
+            rigid.AddForce (Vector3.up * 3000000 * Time.deltaTime);
+            jump = true;
 		}
 	}
 

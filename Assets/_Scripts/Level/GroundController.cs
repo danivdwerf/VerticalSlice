@@ -64,7 +64,7 @@ public class GroundController : MonoBehaviour
 		sr.sprite.texture.Apply();
 		Destroy(GetComponent<PolygonCollider2D>());
 		gameObject.AddComponent<PolygonCollider2D>();
-	}
+    }
 
 	private V2int World2Pixel(float x, float y) 
 	{
