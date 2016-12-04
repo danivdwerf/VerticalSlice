@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Falling", false);
         }
-        else if (distanceToGround() > 1)
+        else if (distanceToGround() > 0.5f)
         {
             anim.SetBool("Falling", true);
         }
