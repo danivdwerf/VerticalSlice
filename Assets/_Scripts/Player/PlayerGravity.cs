@@ -28,8 +28,8 @@ public class PlayerGravity : MonoBehaviour
 				} 
 				else
 				{
-					gravity = 200000f;
-				}
+					gravity = 150000f;//200000f
+                }
 			}
 		}
         
