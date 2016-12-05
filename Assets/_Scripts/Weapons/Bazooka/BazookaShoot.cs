@@ -18,10 +18,8 @@ public class BazookaShoot : MonoBehaviour
 
 	private void Start()
 	{
-		//Set the path of the Projectile.\\
-		string projectilePath = "Assets/prefabs/BazookaProjectile.prefab";
 		//Load in the projectile.\\
-		projectile = (GameObject)AssetDatabase.LoadAssetAtPath (projectilePath,typeof(GameObject));
+		projectile = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.projectilePath,typeof(GameObject));
 		//Check if loading succeeded.\\
 		if(!projectile)
 		{
@@ -29,10 +27,8 @@ public class BazookaShoot : MonoBehaviour
 			Debug.LogError ("The GameObject Projectile is null! Did you use the correct path?");
 			return;
 		}
-		//Set the path of the audioclip.\\
-		string shootPath = "Assets/Audio/Effects/RocketRelease.wav";
 		//Load in the audioclip.\\
-		shootClip = (AudioClip)AssetDatabase.LoadAssetAtPath (shootPath,typeof(AudioClip));
+		shootClip = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.bazookaShootAudio,typeof(AudioClip));
 		//Check if loading succeeded.\\
 		if (!shootClip)
 		{

@@ -25,6 +25,8 @@ GameObject:
   - 114: {fileID: 114000012845753854}
   - 114: {fileID: 114000010916616324}
   - 114: {fileID: 114000012146678154}
+  - 114: {fileID: 114000013319323450}
+  - 114: {fileID: 114000011990754110}
   m_Layer: 0
   m_Name: BazookaProjectile
   m_TagString: Untagged
@@ -104,6 +106,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f529c6cfaee4420d8a4e308e5ab463f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011990754110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011397065014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a5f584445bf4b14a50fa963f898a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012146678154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +137,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd594ae2a78844e8895697a410c34597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013319323450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011397065014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abb3c5513f6c401d967ff786781c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000012578721238

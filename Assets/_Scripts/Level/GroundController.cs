@@ -6,7 +6,7 @@ public class GroundController : MonoBehaviour
 	private SpriteRenderer sr;
 	private PolygonCollider2D col;
 	private Color hole; 
-	private CreateLevelCollider createCol;
+	//private CreateLevelCollider createCol;
 	private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
 
@@ -14,7 +14,7 @@ public class GroundController : MonoBehaviour
 	{
 		//reference to sprite renderer
 		sr = GetComponent<SpriteRenderer>(); 
-		createCol = GetComponent<CreateLevelCollider> ();
+		//createCol = GetComponent<CreateLevelCollider> ();
 		//Load in the texture
 		string path = "Assets/Sprites/Level/Worms_level.png";
 		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(path,typeof(Texture2D));
@@ -25,8 +25,7 @@ public class GroundController : MonoBehaviour
 		//make a transparant colour(Color.clear would also work, but now you kind of make it yourself)
 		hole = new Color(0f, 0f, 0f, 0f);
 		//Set the properties according to the sizes of the new sprite 
-		SetDimensions();
-		createCol.SetCollider ();
+		SetDimensions(); 
 		//let the bullet know what the ground is
 		DestroyLevel.groundController = this;
 	}
@@ -65,7 +64,7 @@ public class GroundController : MonoBehaviour
 		sr.sprite.texture.Apply();
 		Destroy(GetComponent<PolygonCollider2D>());
 		gameObject.AddComponent<PolygonCollider2D>();
-	}
+    }
 
 	private V2int World2Pixel(float x, float y) 
 	{

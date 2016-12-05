@@ -318,6 +318,8 @@ GameObject:
   - 212: {fileID: 623184531}
   - 114: {fileID: 623184530}
   - 114: {fileID: 623184533}
+  - 60: {fileID: 623184535}
+  - 114: {fileID: 623184534}
   m_Layer: 0
   m_Name: Level
   m_TagString: Ground
@@ -393,6 +395,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a942f2fb44ed43cba431028614372d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &623184534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623184529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c55c83d4c4dd1145ad5fbbab3c3df36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlphaTolerance: 1
+  DistanceThreshold: 2
+  Scale: 1
+  Decompose: 0
+  RunInPlayMode: 1
+  UseCache: 0
+  lastAlphaTolerance: 1
+  lastScale: 1
+  lastDistanceThreshold: 2
+  lastDecompose: 0
+  lastSprite: {fileID: 0}
+  lastRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  lastOffset: {x: -99999, y: -99999}
+  lastPixelsPerUnit: 0
+  lastFlipX: 0
+  lastFlipY: 0
+  editorCache: []
+--- !u!60 &623184535
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623184529}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: 0.95105654, y: 0.30901697}
+      - {x: 0.5877852, y: -0.80901706}
+      - {x: -0.58778536, y: -0.80901694}
+      - {x: -0.9510565, y: 0.30901712}
 --- !u!1 &781927826
 GameObject:
   m_ObjectHideFlags: 0

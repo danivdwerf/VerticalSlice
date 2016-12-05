@@ -39,6 +39,6 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(gameObject.GetComponent("Player Movement"));
         }
-        Debug.Log(_currentHealth);
+        //Debug.Log(_currentHealth);
 	}
 }

@@ -13,10 +13,8 @@ public class ProjectileCollision : MonoBehaviour
 
 	private void Start()
 	{
-		//The path to the AudioClip.\\
-		string audioPath = "Assets/Audio/Effects/Explosion3.wav";
 		//Load the audioClip.\\
-		explosionSound = (AudioClip)AssetDatabase.LoadAssetAtPath (audioPath,typeof(AudioClip));
+		explosionSound = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.explosion3Path,typeof(AudioClip));
 		//If the Loading failed...\\
 		if (!explosionSound)
 		{
