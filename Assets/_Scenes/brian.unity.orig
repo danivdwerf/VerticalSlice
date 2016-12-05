@@ -1360,13 +1360,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580195745}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475186ae7bdfe8c4f852ddc4585615a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+<<<<<<< HEAD
   myText: {fileID: 1832033744}
+=======
+  myText: {fileID: 0}
+>>>>>>> d1e7250d6f6fb20ea07052de988d6e3569390aad
   healthText: 0
 --- !u!1 &1614154662
 GameObject:

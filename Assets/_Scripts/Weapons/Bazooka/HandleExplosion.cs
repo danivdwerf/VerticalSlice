@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 //Take a chuck out of the level.\\
-public class DestroyLevel : MonoBehaviour 
+public class HandleExplosion : MonoBehaviour 
 {
 	//Reference to the level.\\
 	public static GroundController groundController{get;set;}
 	//reference to the collider.\\
 	private CircleCollider2D circle{get;set;}
+
 	private void Start()
 	{
 		//Set the reference.\\

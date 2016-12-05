@@ -39,6 +39,20 @@ public class PlayerMovement : MonoBehaviour
         checkIfFalling();
         walk();
         checkIfJump();
+        checkIfSliding();
+        extraAnimations();
+    }
+
+    private void checkIfSliding()
+    {
+        if(distanceToGround() > 0.12f && distanceToGround() <= 0.3f && anim.GetBool("slide") == false)
+        {
+            anim.SetBool("slide", true);
+        }
+        else if(anim.GetBool("slide") == true)
+        {
+            anim.SetBool("slide", false);
+        }
     }
 
     private void checkIfFalling()
@@ -47,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Falling", false);
         }
-        else if (distanceToGround() > 0.5f)
+        else if (distanceToGround() > 0.3f && !jump)
         {
             anim.SetBool("Falling", true);
         }
@@ -55,8 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkIfJump()
     {
-        if (distanceToGround() <= 0.12f && jump)
+        if (distanceToGround() <= 0.12f && jump && anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
+            anim.SetBool("Jump", false);
             jump = false;
         }       
 
@@ -82,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!jump)
 		{
+            anim.SetBool("Jump", true);
             rigid.AddForce (Vector3.up * 3000000 * Time.deltaTime);
             jump = true;
 		}
@@ -100,4 +116,20 @@ public class PlayerMovement : MonoBehaviour
         return 100f;
     }
 	
+    private void extraAnimations()
+    {
+        if(anim.GetFloat("Walk") == 0)
+        {
+            if(Random.Range(1,3000) == 9)
+            {
+                Debug.Log("eating apple");
+                anim.SetBool("eatApple", true);                
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleApple"))
+            {
+                anim.SetBool("eatApple", false);
+            }
+
+        }
+    }
 }
