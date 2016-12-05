@@ -36,31 +36,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        checkIfFalling();
         walk();
         checkIfJump();
     }
 
+    private void checkIfFalling()
+    {
+        if (distanceToGround() <= 0.12f)
+        {
+            anim.SetBool("Falling", false);
+        }
+        else if (distanceToGround() > 0.5f)
+        {
+            anim.SetBool("Falling", true);
+        }
+    }
+
     private void checkIfJump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
-        if (hit.collider)
+        if (distanceToGround() <= 0.12f && jump)
         {
-            if (hit.collider.tag == Tags.ground)
-            {
-                if (hit.distance < 0.12f)
-                {
-                    jump = false;
-                    anim.SetBool("Falling", false);
-                }
-            }
-        }
-        else
-        {
-            if (!jump)
-            {
-                anim.SetBool("Falling", true);
-            }
-        }
+            jump = false;
+        }       
+
     }
 
     private void walk()
@@ -88,5 +87,17 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
+    private float distanceToGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 100);
+        if (hit.collider)
+        {
+            if (hit.collider.tag == Tags.ground)
+            {
+                    return hit.distance;
+            }
+        }
+        return 100f;
+    }
 	
 }
