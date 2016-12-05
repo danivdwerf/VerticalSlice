@@ -22,6 +22,7 @@ GameObject:
   - 58: {fileID: 58000012285082294}
   - 114: {fileID: 114000013516463022}
   - 50: {fileID: 50000013226577512}
+  - 114: {fileID: 114000014266846404}
   m_Layer: 0
   m_Name: BazookaExplosionRange
   m_TagString: Untagged
@@ -82,5 +83,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad52af4bdd06a2a47a0ff6f9e4de325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000014266846404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012170416904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464d1ab12feeb4d6db0c88ee9ec1c1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

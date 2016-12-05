@@ -21,7 +21,7 @@ public class CreateSmoke : MonoBehaviour
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds (0.09f);
+			yield return new WaitForSeconds (0.1f);
 			Instantiate (smokeCloud, this.transform.position, Quaternion.identity);	
 		}
 	}
