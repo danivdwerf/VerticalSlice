@@ -27,7 +27,7 @@ public class GroundController : MonoBehaviour
 		//Set the properties according to the sizes of the new sprite 
 		SetDimensions(); 
 		//let the bullet know what the ground is
-		DestroyLevel.groundController = this;
+		HandleExplosion.groundController = this;
 	}
 
 	private void SetDimensions() 
