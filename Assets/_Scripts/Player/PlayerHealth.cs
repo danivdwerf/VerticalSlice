@@ -39,6 +39,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(gameObject.GetComponent("Player Movement"));
         }
-        //Debug.Log(_currentHealth);
 	}
+
+    public void damage(float damageAmount)
+    {
+
+    }
 }
