@@ -67,14 +67,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Jump()
+    {
+        if (!jump)
+        {
+            Debug.Log("je sprinkt");
+            jump = true;
+            anim.SetBool("Jump", true);
+            rigid.AddForce(Vector3.up * 3000000 * Time.deltaTime);            
+        }
+    }
+
     private void checkIfJump()
     {
-        if (distanceToGround() <= 0.12f && jump && anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        if (distanceToGround() <= 0.10f && jump && anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
+            Debug.Log("je kan weer springen");
             anim.SetBool("Jump", false);
             jump = false;
         }       
-
     }
 
     private void walk()
@@ -92,16 +103,6 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-
-	public void Jump()
-	{
-		if (!jump)
-		{
-            anim.SetBool("Jump", true);
-            rigid.AddForce (Vector3.up * 3000000 * Time.deltaTime);
-            jump = true;
-		}
-	}
 
     private float distanceToGround()
     {
