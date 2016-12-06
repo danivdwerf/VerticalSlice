@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 			speed = value;
 		}
 	}
+
 	private float jumpSpeed;
     public float SetJumpSpeed
     {
@@ -23,8 +24,16 @@ public class PlayerMovement : MonoBehaviour
             jumpSpeed = value;
         }
     }
+    private float jumpHeight;
+    public float SetjumpHeight
+    {
+        set
+        {
+            jumpHeight = value;
+        }
+    }
 
-	private Rigidbody2D rigid;
+    private Rigidbody2D rigid;
 
 	private void Start()
 	{
@@ -73,19 +82,27 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("je sprinkt");
             jump = true;
-            anim.SetBool("Jump", true);
-            rigid.AddForce(Vector3.up * 3000000 * Time.deltaTime);            
+            anim.SetBool("Jump", true);         
         }
     }
 
     private void checkIfJump()
     {
-        if (distanceToGround() <= 0.10f && jump && anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        if (jump)
         {
-            Debug.Log("je kan weer springen");
-            anim.SetBool("Jump", false);
-            jump = false;
-        }       
+            /*if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+            {
+                if (distanceToGround() <= 0.11f )
+                {
+                    Debug.Log("je kan weer springen");
+                    anim.SetBool("Jump", false);
+                    jump = false;
+                }
+            }   */
+           
+            rigid.velocity = new Vector2(0, jumpSpeed-0.1f);
+            jumpSpeed -= 0.4f;
+        }
     }
 
     private void walk()
