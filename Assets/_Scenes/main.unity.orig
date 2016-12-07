@@ -1538,7 +1538,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+<<<<<<< HEAD
+  - {fileID: 553005801}
+=======
   - {fileID: 1143530127}
+>>>>>>> ee4533b8c07148078871dfb3db8bc6d8464303b9
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!114 &1580195750
@@ -1603,7 +1607,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+<<<<<<< HEAD
   myText: {fileID: 1700250460}
+=======
+  myText: {fileID: 776087131}
+>>>>>>> ee4533b8c07148078871dfb3db8bc6d8464303b9
   healthText: 0
 --- !u!1 &1614154662
 GameObject:

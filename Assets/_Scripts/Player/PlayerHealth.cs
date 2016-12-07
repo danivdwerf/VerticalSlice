@@ -37,7 +37,16 @@ public class PlayerHealth : MonoBehaviour
         }
         if(_isDead == true)
         {
-            Destroy(gameObject.GetComponent("Player Movement"));
+            //Destroy(gameObject.GetComponent("player movement"));
         }
 	}
+
+    public void damage(int damageAmount)
+    {
+        _currentHealth -= damageAmount;
+        if(_currentHealth < 0)
+        {
+            _currentHealth = 0;
+        }
+    }
 }

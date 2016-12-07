@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jump)
         {
+<<<<<<< HEAD
+            anim.SetBool("Jump", false);
+            jump = false;
+        }       
+=======
             /*if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
             {
                 if (distanceToGround() <= 0.11f )
@@ -102,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
             rigid.velocity = new Vector2(0, jumpSpeed-0.1f);
             jumpSpeed -= 0.4f;
         }
+>>>>>>> ee4533b8c07148078871dfb3db8bc6d8464303b9
     }
 
     private void walk()
