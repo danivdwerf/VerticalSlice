@@ -3,9 +3,12 @@ using System.Collections;
 
 public class CalculateDamage : MonoBehaviour 
 {
+
+
 	private void Start()
 	{
 		GameObject curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
+        PlayerHealth health = curPlayer.GetComponent<PlayerHealth>();
 		RaycastHit2D hit = Physics2D.Raycast(this.transform.position,curPlayer.transform.position);
 		if (hit)
 		{
@@ -16,6 +19,7 @@ public class CalculateDamage : MonoBehaviour
 			if (hit.distance <= 0.8f)
 			{
 				int damage = (int)Mathf.Round (50-(hit.distance*60));
+                health.damage(damage);
 			}
 		}
 	}
