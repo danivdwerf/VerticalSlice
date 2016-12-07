@@ -36,8 +36,7 @@ public class PlayerInput : MonoBehaviour
 		}
 		if (Input.GetKeyDown (KeyCode.Return))
 		{
-            movement.SetJumpSpeed = 5;
-            movement.Jump ();
+            movement.Jump (3,3);
 		}
 	}
 }
