@@ -71,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!jump)
         {
-            Debug.Log("je sprinkt");
             jump = true;
             anim.SetBool("Jump", true);
             rigid.AddForce(Vector3.up * 3000000 * Time.deltaTime);            
@@ -82,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (distanceToGround() <= 0.10f && jump && anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
-            Debug.Log("je kan weer springen");
             anim.SetBool("Jump", false);
             jump = false;
         }       
