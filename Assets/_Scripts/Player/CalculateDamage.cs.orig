@@ -3,17 +3,25 @@ using System.Collections;
 
 public class CalculateDamage : MonoBehaviour 
 {
-
-
+<<<<<<< HEAD
+	private GameObject curPlayer{ get;set;}
 	private void Start()
 	{
 		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
-        PlayerHealth health = curPlayer.GetComponent<PlayerHealth>();
+		findDistance ();
 		Debug.DrawLine (this.transform.position, curPlayer.transform.position,Color.red);
 	}
 
 	private void findDistance()
 	{
+=======
+
+
+	private void Start()
+	{
+		GameObject curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
+        PlayerHealth health = curPlayer.GetComponent<PlayerHealth>();
+>>>>>>> ee4533b8c07148078871dfb3db8bc6d8464303b9
 		RaycastHit2D hit = Physics2D.Raycast(this.transform.position,curPlayer.transform.position);
 		Debug.Log (hit.collider);
 		if (hit)
