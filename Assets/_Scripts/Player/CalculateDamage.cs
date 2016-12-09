@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CalculateDamage : MonoBehaviour 
 {
+<<<<<<< HEAD
 
     private GameObject curPlayer;
     private PlayerHealth health;
@@ -10,6 +11,14 @@ public class CalculateDamage : MonoBehaviour
 	{
 		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
          health = curPlayer.GetComponent<PlayerHealth>();
+=======
+	private GameObject curPlayer;
+	private PlayerHealth health;
+	private void Start()
+	{
+		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
+        health = curPlayer.GetComponent<PlayerHealth>();
+>>>>>>> 28fa6e06e48397ea03b08abcb72f3a904c9ba544
 		Debug.DrawLine (this.transform.position, curPlayer.transform.position,Color.red);
 	}
 
@@ -19,10 +28,6 @@ public class CalculateDamage : MonoBehaviour
 		Debug.Log (hit.collider);
 		if (hit)
 		{
-			if (hit.distance <= 0.2f)
-			{
-				curPlayer.GetComponent<Rigidbody2D> ().AddForce (transform.right*10,ForceMode2D.Impulse);
-			}
 			if (hit.distance <= 0.8f)
 			{
 				//PLaceholder forumula till we get a better one:\\
