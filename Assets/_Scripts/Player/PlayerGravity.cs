@@ -22,13 +22,13 @@ public class PlayerGravity : MonoBehaviour
 		{
 			if (hit.collider.tag == Tags.ground)
 			{                
-                if (hit.distance < 0.12f)
+                if (hit.distance < 0.14f)
 				{
 					gravity = 5000f;
 				} 
 				else
 				{
-					gravity = 150000f;//200000f
+					gravity = 120000f;//200000f
                 }
 			}
 		}

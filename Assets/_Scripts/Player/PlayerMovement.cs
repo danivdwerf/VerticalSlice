@@ -5,9 +5,14 @@ public class PlayerMovement : MonoBehaviour
 {
 	private Animator anim;
 
-	private bool jump;
+    private bool sliding;
+    private bool falling;
 
-	private float speed;
+	private bool jump;
+    private bool jumpCharge;
+    private float jumpChargeDone;
+
+    private float speed;
 	public float SetSpeed
 	{
 		set
@@ -16,32 +21,24 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	private float jumpSpeed;
-    public float SetJumpSpeed
-    {
-        set
-        {
-            jumpSpeed = value;
-        }
-    }
-    private float jumpHeight;
-    public float SetjumpHeight
-    {
-        set
-        {
-            jumpHeight = value;
-        }
-    }
+	private float jumpSpeed = 8;
+    private float jumpHeight = 4;
 
     private Rigidbody2D rigid;
+
+    private Vector3 lastPosition;
 
 	private void Start()
 	{
 		speed = 0f;
 		rigid = GetComponent<Rigidbody2D> ();
 		anim = GetComponent <Animator>();
+        sliding = false;
+        falling = false;
 		jump = false;
-	}
+        jumpCharge = false;
+        lastPosition = transform.position;
+    }
 
     private void FixedUpdate()
     {
@@ -50,74 +47,112 @@ public class PlayerMovement : MonoBehaviour
         checkIfJump();
         checkIfSliding();
         extraAnimations();
+
     }
 
     private void checkIfSliding()
     {
-        if(distanceToGround() > 0.12f && distanceToGround() <= 0.3f && anim.GetBool("slide") == false)
+        if(distanceToGround() > 0.13f && distanceToGround() <= 0.16f && anim.GetBool("Falling") == false)
         {
+            sliding = true;
             anim.SetBool("slide", true);
         }
         else if(anim.GetBool("slide") == true)
         {
+            sliding = false;
             anim.SetBool("slide", false);
         }
     }
 
     private void checkIfFalling()
     {
-        if (distanceToGround() <= 0.12f)
+        if (distanceToGround() <= 0.16f )//|| !moving())
         {
+            falling = false;
             anim.SetBool("Falling", false);
         }
-        else if (distanceToGround() > 0.3f && !jump)
+        else if (distanceToGround() > 0.2f && !jumpCharge )//&& moving())
         {
+            falling = true;
             anim.SetBool("Falling", true);
         }
     }
 
-    public void Jump()
+    public void Jump(float js,float jh)
     {
-        if (!jump)
+        if (!jump && !falling)
         {
+<<<<<<< HEAD
+            jumpSpeed = js * transform.localScale.x;
+            jumpHeight = jh;
+            jumpCharge = true;
+            anim.SetBool("Jump", true);
+            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+            jumpChargeDone = state.length + Time.time;          
+=======
             jump = true;
             anim.SetBool("Jump", true);         
+>>>>>>> a3e9cec6207fc7b684185d42ec5f7b60edb5cd2f
         }
     }
 
     private void checkIfJump()
     {
+        if(jumpCharge && Time.time > jumpChargeDone)
+        {
+            anim.SetBool("Jump", false);
+            transform.position += new Vector3(0, 0.1f,0);
+            jumpCharge = false;
+            jump = true;
+        }
+
         if (jump)
         {
-            /*if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
-            {
-                if (distanceToGround() <= 0.11f )
+                if (distanceToGround() <= 0.14f )
                 {
-                    Debug.Log("je kan weer springen");
-                    anim.SetBool("Jump", false);
                     jump = false;
-                }
-            }   */
-           
-            rigid.velocity = new Vector2(0, jumpSpeed-0.1f);
-            jumpSpeed -= 0.4f;
+                }            
+
+            rigid.velocity = new Vector2(jumpSpeed,jumpHeight );
+            if(jumpSpeed < -0.3f || jumpSpeed > 0.3f)
+            {
+                jumpSpeed -= 0.2f * transform.localScale.x;
+            }
+            else
+            {
+                jumpSpeed = 0.3f * transform.localScale.x;
+            }
+
+            if (jumpHeight > 0)
+            {
+                jumpHeight -= 0.2f;
+            }
+            else
+            {
+                jumpHeight = 0;
+            }
+            
         }
     }
 
     private void walk()
     {
-        rigid.velocity = new Vector2(speed, 0);
-
-        anim.SetFloat("Walk", Mathf.Abs(rigid.velocity.x));
-
-        if (rigid.velocity.x > 0 && transform.localScale.x < 0)
+        if(!jump && !jumpCharge)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            rigid.velocity = new Vector2(speed, 0);
+
+            anim.SetFloat("Walk", Mathf.Abs(rigid.velocity.x));
+
+            if (rigid.velocity.x > 0 && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (rigid.velocity.x < 0 && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
-        else if (rigid.velocity.x < 0 && transform.localScale.x > 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        
     }
 
     private float distanceToGround()
@@ -135,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
 	
     private void extraAnimations()
     {
-        if(anim.GetFloat("Walk") == 0)
+        if(anim.GetFloat("Walk") == 0 && !jump && !falling)
         {
             if(Random.Range(1,3000) == 9)
             {
@@ -148,5 +183,19 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+    }
+
+    private bool moving()
+    {
+        if(lastPosition.x > transform.position.x -0.5f && lastPosition.y > transform.position.y - 0.5f && lastPosition.x < transform.position.x + 0.5f && lastPosition.y < transform.position.y + 0.5f)
+        {
+            lastPosition = transform.position;
+            return false;
+        }
+        else
+        {
+            lastPosition = transform.position;
+            return true;
+        }        
     }
 }
