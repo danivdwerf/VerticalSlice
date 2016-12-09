@@ -82,17 +82,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!jump && !falling)
         {
-<<<<<<< HEAD
+
             jumpSpeed = js * transform.localScale.x;
             jumpHeight = jh;
             jumpCharge = true;
             anim.SetBool("Jump", true);
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
             jumpChargeDone = state.length + Time.time;          
-=======
+
             jump = true;
             anim.SetBool("Jump", true);         
->>>>>>> a3e9cec6207fc7b684185d42ec5f7b60edb5cd2f
         }
     }
 

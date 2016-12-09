@@ -4,11 +4,12 @@ using System.Collections;
 public class CalculateDamage : MonoBehaviour 
 {
 
-
-	private void Start()
+    private GameObject curPlayer;
+    private PlayerHealth health;
+    private void Start()
 	{
 		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
-        PlayerHealth health = curPlayer.GetComponent<PlayerHealth>();
+         health = curPlayer.GetComponent<PlayerHealth>();
 		Debug.DrawLine (this.transform.position, curPlayer.transform.position,Color.red);
 	}
 
