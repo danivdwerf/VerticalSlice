@@ -3,23 +3,12 @@ using System.Collections;
 
 public class CalculateDamage : MonoBehaviour 
 {
-<<<<<<< HEAD
-
-    private GameObject curPlayer;
-    private PlayerHealth health;
-    private void Start()
-	{
-		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
-         health = curPlayer.GetComponent<PlayerHealth>();
-=======
 	private GameObject curPlayer;
 	private PlayerHealth health;
 	private void Start()
 	{
 		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
         health = curPlayer.GetComponent<PlayerHealth>();
->>>>>>> 28fa6e06e48397ea03b08abcb72f3a904c9ba544
-		Debug.DrawLine (this.transform.position, curPlayer.transform.position,Color.red);
 	}
 
 	private void findDistance()
