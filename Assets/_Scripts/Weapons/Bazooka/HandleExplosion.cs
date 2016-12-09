@@ -14,10 +14,10 @@ public class HandleExplosion : MonoBehaviour
 		circle = GetComponent<CircleCollider2D> ();
 	}
 	//When the collider collides...\\
-	void OnCollisionEnter2D( Collision2D coll )
+	void OnCollisionEnter2D(Collision2D other)
 	{
 		//And the collider has the tag "Ground".\\
-		if( coll.gameObject.CompareTag(Tags.ground))
+		if(other.gameObject.CompareTag(Tags.ground))
 		{
 			//Destroy the ground...\\
 			groundController.DestroyGround(circle);
