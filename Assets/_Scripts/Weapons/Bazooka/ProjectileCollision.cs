@@ -11,6 +11,8 @@ public class ProjectileCollision : MonoBehaviour
 	//Create reference to the audioHandler script.\\
 	private GameControllerPlayAudio audioHandler{get;set;}
 
+	private ExplosionUI ui{ get; set;}
+
 	private void Start()
 	{
 		//Load the audioClip.\\
@@ -24,6 +26,7 @@ public class ProjectileCollision : MonoBehaviour
 		}
 		//Set references to the scripts.\\
 		levelDestroyer = GetComponent<CreateLevelDestroyer> ();
+		ui = GetComponent<ExplosionUI> ();
 		audioHandler = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<GameControllerPlayAudio> ();
 	}
 	//If the projectile collides with something...\\
@@ -36,6 +39,8 @@ public class ProjectileCollision : MonoBehaviour
 			levelDestroyer.groundHit ();
 			//Play the explosion sound.\\
 			audioHandler.PlayAudio (explosionSound,false);
+
+			ui.createExplosion (transform);
 		}
 	}
 }
