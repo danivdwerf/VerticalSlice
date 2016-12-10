@@ -3,11 +3,14 @@ using System.Collections;
 using UnityEditor;
 public class GroundController : MonoBehaviour 
 {
-	private SpriteRenderer sr;
+    //public AdvancedPolygonCollider advancedpolygon;
+
+    private SpriteRenderer sr;
 	private PolygonCollider2D col;
 	private Color hole; 
-	//private CreateLevelCollider createCol;
-	private float widthWorld, heightWorld;
+    
+    //private CreateLevelCollider createCol;
+    private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
 
 	void Start()
@@ -64,6 +67,10 @@ public class GroundController : MonoBehaviour
 		sr.sprite.texture.Apply();
 		Destroy(GetComponent<PolygonCollider2D>());
 		gameObject.AddComponent<PolygonCollider2D>();
+        Destroy(GetComponent("AdvancedPolygonCollider"));
+        //AdvancedPolygonCollider advancedPolygon = gameObject.AddComponent(typeof(AdvancedPolygonCollider)) as AdvancedPolygonCollider;
+        //gameObject.AddComponent("AdvancedPolygonCollider");
+        
     }
 
 	private V2int World2Pixel(float x, float y) 
