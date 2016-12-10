@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jump;
     private bool jumpCharge;
-    private float jumpChargeDone;
+    private float timeTojumpCharge;
+    private float timeToStandUp;
 
     private float speed;
     public float SetSpeed
@@ -27,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigid;
 
-    private Vector3 lastPosition;
-
     private void Start()
     {
         speed = 0f;
@@ -38,65 +37,82 @@ public class PlayerMovement : MonoBehaviour
         falling = false;
         jump = false;
         jumpCharge = false;
-        lastPosition = transform.position;
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(state);
         checkIfFalling();
         walk();
         checkIfJump();
         checkIfSliding();
         extraAnimations();
-
+        checkIfStandingUp();
     }
 
     private void checkIfSliding()
     {
-        if (distanceToGround() > 0.13f && distanceToGround() <= 0.16f && anim.GetBool("Falling") == false)
+        if (distanceToGround() > 0.10f && distanceToGround() <= 0.18f && state != PlayerState.falling)
         {
             state = PlayerState.sliding;
             anim.SetBool("slide", true);
         }
         else if (anim.GetBool("slide") == true)
-        {
-            state = PlayerState.idle;
+        {            
             anim.SetBool("slide", false);
+            state = PlayerState.standingUp;
         }
     }
 
     private void checkIfFalling()
     {
-        if (distanceToGround() < 0.16f)//|| !moving())
-        {
-            state = PlayerState.idle;            
+        if (distanceToGround() <= 0.11f && anim.GetBool("Falling") == true)
+        {                     
             anim.SetBool("Falling", false);
+            state = PlayerState.standingUp;
         }
-        else if (distanceToGround() > 0.2f && !jumpCharge)//&& moving())
+        else if (distanceToGround() > 0.18f && !jumpCharge)
         {
             state = PlayerState.falling;           
             anim.SetBool("Falling", true);
         }
-        lastPosition = transform.position;
+       
+    }
+
+    private void checkIfStandingUp()
+    {
+        if(state == PlayerState.standingUp && state != PlayerState.idle && Time.time > timeToStandUp + 0.2f )
+        {
+            AnimatorStateInfo animationState = anim.GetCurrentAnimatorStateInfo(0);
+            timeToStandUp = animationState.length + Time.time;
+        }
+        if(state == PlayerState.standingUp && state != PlayerState.idle && Time.time > timeToStandUp)
+        {
+            state = PlayerState.idle;
+        }
     }
 
     public void Jump(float js, float jh)
     {
-        if (!jumpCharge && state == PlayerState.idle)
+        if (!jumpCharge && !jump && state == PlayerState.idle)
         {
 
             jumpSpeed = js * transform.localScale.x;
             jumpHeight = jh;
             jumpCharge = true;
-            anim.SetBool("Jump", true);
-            AnimatorStateInfo animationState = anim.GetCurrentAnimatorStateInfo(0);
-            jumpChargeDone = animationState.length + Time.time;
+            anim.SetBool("Jump", true);         
         }
+        
     }
 
     private void checkIfJump()
     {
-        if (jumpCharge && Time.time > jumpChargeDone)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump") && jumpCharge && Time.time > timeTojumpCharge + 0.5f)
+        {
+            AnimatorStateInfo animationState = anim.GetCurrentAnimatorStateInfo(0);
+            timeTojumpCharge = (animationState.length + Time.time) - 0.1f;
+        }
+        if (jumpCharge && Time.time > timeTojumpCharge)
         {
             anim.SetBool("Jump", false);
             transform.position += new Vector3(0, 0.1f, 0);
@@ -106,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (jump)
         {
-            if (distanceToGround() <= 0.16f)
+            if (distanceToGround() <= 0.11f)
             {
                 jump = false;
             }
@@ -195,5 +211,6 @@ public enum PlayerState
 {
     falling,
     sliding,
-    idle
+    idle,
+    standingUp
 }

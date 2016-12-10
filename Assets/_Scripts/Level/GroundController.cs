@@ -5,6 +5,7 @@ public class GroundController : MonoBehaviour
 {
     //public AdvancedPolygonCollider advancedpolygon;
 
+    private CreateLevelCollider createCollider;
     private SpriteRenderer sr;
 	private PolygonCollider2D col;
 	private Color hole; 
@@ -15,8 +16,10 @@ public class GroundController : MonoBehaviour
 
 	void Start()
 	{
-		//reference to sprite renderer
-		sr = GetComponent<SpriteRenderer>(); 
+        //reference to CreateLevelCollider script
+        createCollider = GetComponent<CreateLevelCollider>();      
+        //reference to sprite renderer
+        sr = GetComponent<SpriteRenderer>(); 
 		//createCol = GetComponent<CreateLevelCollider> ();
 		//Load in the texture
 		string path = "Assets/Sprites/Level/Worms_level.png";
@@ -31,7 +34,9 @@ public class GroundController : MonoBehaviour
 		SetDimensions(); 
 		//let the bullet know what the ground is
 		HandleExplosion.groundController = this;
-	}
+        // set collider on gameobject
+        createCollider.SetCollider();
+    }
 
 	private void SetDimensions() 
 	{
@@ -66,11 +71,7 @@ public class GroundController : MonoBehaviour
 		}
 		sr.sprite.texture.Apply();
 		Destroy(GetComponent<PolygonCollider2D>());
-		gameObject.AddComponent<PolygonCollider2D>();
-        Destroy(GetComponent("AdvancedPolygonCollider"));
-        //AdvancedPolygonCollider advancedPolygon = gameObject.AddComponent(typeof(AdvancedPolygonCollider)) as AdvancedPolygonCollider;
-        //gameObject.AddComponent("AdvancedPolygonCollider");
-        
+        createCollider.SetCollider();
     }
 
 	private V2int World2Pixel(float x, float y) 
