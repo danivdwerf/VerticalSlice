@@ -2,32 +2,45 @@
 using System.Collections;
 
 public class CurrentPlayer : MonoBehaviour
-{  
-    [SerializeField]private GameObject[] players;
-    [SerializeField]private int current = 0;
+{
+    private EndTurn endTurn;
+    private PlayerInput playerInput;
+    //private PlayerMovement playerMovement;
 
-    private Timer timer;
+    [SerializeField]
+    private GameObject[] players;
+    [SerializeField]
+    private int current;
 
     void Start()
     {
-        timer = GetComponent<Timer>();
+        endTurn = GetComponent<EndTurn>();
+        playerInput = GameObject.FindObjectOfType<PlayerInput>();
+        //playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+
+        playerInput.enabled = true;
+        //playerMovement.enabled = true;
+    }
+
+    void Update()
+    {
+        current = endTurn.arrayPos;
+        Debug.Log(endTurn.arrayPos);
+        if (endTurn.arrayPos == 0)
+        {
+            playerInput.enabled = true;
+            //playerMovement.enabled = true;
+        }
+        else
+        {
+            playerInput.enabled = false;
+            //playerMovement.enabled = false;
+        }
+        Debug.Log(current);
     }
 
     public GameObject currentSelectedPlayer()
-    {        
-        return players[current];
-    }
-
-    public void nextPlayer()
     {
-        if(current < players.Length && timer.timeLeft <= 1.0f)
-        {
-            current++;
-        }
-        /*else
-        {
-            current = 0;
-        }*/
-        Debug.Log(players);
+        return players[current];
     }
 }
