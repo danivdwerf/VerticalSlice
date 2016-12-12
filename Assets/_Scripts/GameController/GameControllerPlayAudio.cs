@@ -10,11 +10,8 @@ public class GameControllerPlayAudio : MonoBehaviour
 	}
 	public void PlayAudio(AudioClip clip,bool looping)
 	{
-		if (clip != source.clip)
-		{
-			source.clip = clip;
-			source.loop = looping;
-			source.Play ();
-		}
+		source.clip = clip;
+		source.loop = looping;
+		source.PlayOneShot (clip);
 	}
 }

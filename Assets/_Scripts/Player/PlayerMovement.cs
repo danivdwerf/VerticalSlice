@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(state);
         checkIfFalling();
         walk();
         checkIfJump();
@@ -66,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkIfFalling()
     {
-        if (distanceToGround() <= 0.11f && anim.GetBool("Falling") == true)
+        if (distanceToGround() <= 0.10f && anim.GetBool("Falling") == true)
         {                     
             anim.SetBool("Falling", false);
             state = PlayerState.standingUp;
