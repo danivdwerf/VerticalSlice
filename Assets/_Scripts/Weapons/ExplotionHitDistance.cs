@@ -10,17 +10,16 @@ public class ExplotionHitDistance : MonoBehaviour
     void Start ()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        for(int i = 0; i < players.Length -1; i++)
+        for(int i = 0; i < players.Length; i++)
         {
-            distance = this.transform.position - players[i].transform.position;
-            Debug.Log(distance.x);
-            Debug.Log(Mathf.Abs(distance.x));
+            distance = players[i].transform.position - this.transform.position;
+
+            if(Mathf.Abs(distance.x) < 0.5f && Mathf.Abs(distance.y) < 0.5f)
+            {
+                players[i].GetComponent<explosionForce>().calculatePush(distance);
+            }
+            Debug.Log("explotion position: " + this.transform.position + " player position: " + players[i].transform.position + " distance between the two: " + distance);
         }
 	}
 	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 }

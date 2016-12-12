@@ -3,25 +3,50 @@ using System.Collections;
 
 public class explosionForce : MonoBehaviour 
 {
-	private Vector2 distance;
-	private GameObject currentPlayer;
-	private Rigidbody2D rigid;
-	// Use this for initialization
-	void Start () 
-	{
-		currentPlayer = GameObject.FindGameObjectWithTag (Tags.gameController).GetComponent<CurrentPlayer>().currentSelectedPlayer();
-		distance = this.transform.position - currentPlayer.transform.position;
-		rigid = currentPlayer.GetComponent<Rigidbody2D> ();
-		if (Mathf.Abs(distance.x) < 1.2f && Mathf.Abs(distance.y)<1.2f)
-		{
-			pushPlayer ();
-		}
-	}
+    private Vector2 distance;
+    private bool playerHit = false;
+
+    private Vector2 position = new Vector2();
+    private Vector2 velocity = new Vector2(0, 0);
+    private float mass = 50;
+    private float maxSpeed = 10;
+
+    private void Update()
+    {       
+        if (playerHit)
+        {
+            pushPlayer();
+        }
+    }
 
 	private void pushPlayer()
 	{
-		float forceMultiplier = -900000;
-		Vector2 forceVector = distance*forceMultiplier;
-		rigid.AddRelativeForce(forceVector*Time.deltaTime);
-	}
+        Debug.Log(distance);
+        distance.Normalize();
+        Debug.Log(distance);
+
+        if (maxSpeed > 0)
+        {
+            maxSpeed -= 0.2f;
+        }
+        else
+        {
+            maxSpeed = 4;
+            playerHit = false;
+        }
+
+        Vector2 desiredVelocity = distance * maxSpeed ;
+
+        velocity += desiredVelocity / mass;
+        
+        position += velocity * Time.deltaTime;
+
+        transform.position = position;
+    }
+    public void calculatePush(Vector2 hitDistance)
+    {
+        position = this.transform.position;
+        distance = hitDistance;
+        playerHit = true;
+    }
 }
