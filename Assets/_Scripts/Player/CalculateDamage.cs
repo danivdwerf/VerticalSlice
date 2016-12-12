@@ -19,8 +19,6 @@ public class CalculateDamage : MonoBehaviour
 		{
 			if (hit.distance <= 0.8f)
 			{
-				//PLaceholder forumula till we get a better one:\\
-				//integer damgage = (int)Mathf.Round(MaxDamgae-(hit.distance*60))\\
 				int damage = (int)Mathf.Round (50-(hit.distance*60));
                 health.damage(damage);
 			}

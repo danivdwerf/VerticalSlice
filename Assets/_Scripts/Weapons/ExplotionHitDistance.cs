@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExplotionHitDistance : MonoBehaviour
 {
+	/*
     private GameObject[] players;
     private Vector2 distance;
     // Use this for initialization
@@ -26,5 +27,5 @@ public class ExplotionHitDistance : MonoBehaviour
             Debug.Log("explotion position: " + this.transform.position + " player position: " + players[i].transform.position + " distance between the two: " + distance);
         }
 	}
-	
+	*/
 }
