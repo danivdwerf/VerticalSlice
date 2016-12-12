@@ -1151,6 +1151,7 @@ GameObject:
   - component: {fileID: 1580195747}
   - component: {fileID: 1580195753}
   - component: {fileID: 1580195754}
+  - component: {fileID: 1580195755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1305,6 +1306,17 @@ MonoBehaviour:
   _maxHealth: 100
   myText: {fileID: 1930847033}
   healthText: 0
+--- !u!114 &1580195755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1580195745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53064c091f82f41b5ae98786b16722f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1614154662
 GameObject:
   m_ObjectHideFlags: 0
