@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float _maxHealth = 100;
-    private float _currentHealth;
+	private int _maxHealth = 100;
+	private int _currentHealth;
     public Text myText;
     private bool _isDead;
 

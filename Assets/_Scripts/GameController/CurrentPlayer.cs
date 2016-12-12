@@ -25,7 +25,6 @@ public class CurrentPlayer : MonoBehaviour
     void Update()
     {
         current = endTurn.arrayPos;
-        Debug.Log(endTurn.arrayPos);
         if (endTurn.arrayPos == 0)
         {
             playerInput.enabled = true;
@@ -36,7 +35,6 @@ public class CurrentPlayer : MonoBehaviour
             playerInput.enabled = false;
             //playerMovement.enabled = false;
         }
-        Debug.Log(current);
     }
 
     public GameObject currentSelectedPlayer()

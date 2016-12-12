@@ -9,21 +9,16 @@ public class CalculateDamage : MonoBehaviour
 	{
 		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
         health = curPlayer.GetComponent<PlayerHealth>();
+		findDistance ();
 	}
 
 	private void findDistance()
 	{
-		RaycastHit2D hit = Physics2D.Raycast(this.transform.position,curPlayer.transform.position);
-		Debug.Log (hit.collider);
-		if (hit)
+		Vector2 distance = this.transform.position-curPlayer.transform.position;
+		if (Mathf.Abs (distance.x)<=0.8f||Mathf.Abs(distance.y)<=0.5f)
 		{
-			if (hit.distance <= 0.8f)
-			{
-				int damage = (int)Mathf.Round (50-(hit.distance*60));
-                health.damage(damage);
-			}
+			int damage = (int)(50 - (Mathf.Abs(distance.x) * 56.25f));
+			health.damage (damage);
 		}
-
-		Debug.Log (this.transform.position - curPlayer.transform.position);
 	}
 }
