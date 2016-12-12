@@ -2,32 +2,32 @@
 using System.Collections;
 
 public class CurrentPlayer : MonoBehaviour
-{  
-    [SerializeField]private GameObject[] players;
-    [SerializeField]private int current = 0;
+{
+    private EndTurn endTurn;
 
-    private Timer timer;
+    [SerializeField]
+    private GameObject[] players;
+    [SerializeField]
+    private int current;
 
     void Start()
     {
-        timer = GetComponent<Timer>();
+        endTurn = GetComponent<EndTurn>();
+    }
+
+    void Update()
+    {
+        current = endTurn.arrayPos;
+
+        if (endTurn.arrayPos == 0)
+        {
+
+        }
+        Debug.Log(current);
     }
 
     public GameObject currentSelectedPlayer()
-    {        
-        return players[current];
-    }
-
-    public void nextPlayer()
     {
-        if(current < players.Length && timer.timeLeft <= 1.0f)
-        {
-            current++;
-        }
-        /*else
-        {
-            current = 0;
-        }*/
-        Debug.Log(players);
+        return players[current];
     }
 }
