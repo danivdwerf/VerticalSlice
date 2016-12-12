@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EndTurn : MonoBehaviour
 {
-    private int[] currentTurn = { 1, 2 };
-    private int arrayPos = 0;
+    private int[] currentTurn = { 0, 1 };
+    public int arrayPos = 0;
 
     private Timer timer;
 
@@ -15,18 +15,21 @@ public class EndTurn : MonoBehaviour
 	
 	void Update ()
     {
-        if (timer.timeLeft <= 1f)
+        if (timer.timeLeft <= 0.02f)
         {
-            Debug.Log(currentTurn[arrayPos]);
-            if(arrayPos >= currentTurn.Length -1)
-            {
-                arrayPos = 0;
-            }
-            else
-            {
-                arrayPos += 1;
-            }
+            Ass();
         }
-
 	}
+    public void Ass()
+    {
+        timer.timeLeft = 0;
+        if (arrayPos >= currentTurn.Length - 1)
+        {
+            arrayPos = 0;
+        }
+        else
+        {
+            arrayPos += 1;
+        }
+    }
 }
