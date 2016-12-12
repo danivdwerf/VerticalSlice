@@ -14,7 +14,12 @@ public class ExplotionHitDistance : MonoBehaviour
         {
             distance = players[i].transform.position - this.transform.position;
 
-            if(Mathf.Abs(distance.x) < 0.5f && Mathf.Abs(distance.y) < 0.5f)
+            if(Mathf.Abs(distance.y) == 0)
+            {
+                distance.y += 0.1f;
+            }
+
+            if (Mathf.Abs(distance.x) < 0.5f && Mathf.Abs(distance.y) < 0.5f)
             {
                 players[i].GetComponent<explosionForce>().calculatePush(distance);
             }
