@@ -24,7 +24,10 @@ public class explosionForce : MonoBehaviour
         {
             pushPlayer();
         }
-       
+        else
+        {
+            this.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        }
     }
 
     private void pushPlayer()
@@ -38,6 +41,11 @@ public class explosionForce : MonoBehaviour
         {
             velocity.y = velocity.y - (10f * Time.deltaTime);
         }
+
+
+        float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+
+        this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         position += velocity * Time.deltaTime;
 
