@@ -5,13 +5,6 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft = 60.0f;
 
-    private CurrentPlayer currentPlayer;
-
-    void Start()
-    {
-        currentPlayer = GetComponent<CurrentPlayer>();
-    }
-
     public void Update()
     {
         timeLeft -= Time.deltaTime;

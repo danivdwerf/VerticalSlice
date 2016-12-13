@@ -15,6 +15,6 @@ public class ExplosionUI : MonoBehaviour
 	}
 	public void createExplosion(Transform pos)
 	{
-		GameObject sploose = Instantiate (explosion, pos.position, Quaternion.identity) as GameObject;
+		Instantiate (explosion, pos.position, Quaternion.identity);
 	}
 }
