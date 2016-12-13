@@ -53,7 +53,11 @@ public class explosionForce : MonoBehaviour
     }
 
     public void calculatePush(Vector2 hitDistance)
+<<<<<<< HEAD
     {       
+=======
+    {
+>>>>>>> d03a75e13cecef6fed7728a48c785c4d359b3ff0
         position = this.transform.position;
         distance = hitDistance;
         distance.Normalize();
