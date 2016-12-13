@@ -31,8 +31,7 @@ public class explosionForce : MonoBehaviour
     }
 
     private void pushPlayer()
-    {
-        Debug.Log("push werkt");
+    {        
         if (Mathf.Abs(velocity.x) > 0)
         {
             velocity.x = velocity.x - (0.5f * Time.deltaTime);
@@ -54,8 +53,7 @@ public class explosionForce : MonoBehaviour
     }
 
     public void calculatePush(Vector2 hitDistance)
-    {
-        Debug.Log("calculate werkt");
+    {       
         position = this.transform.position;
         distance = hitDistance;
         distance.Normalize();

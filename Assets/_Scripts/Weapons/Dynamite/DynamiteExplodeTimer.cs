@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DynamiteExplodeTimer : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class DynamiteExplodeTimer : MonoBehaviour
 
     private DynamiteAnimation dynaAnimation;
     private DynamiteExplode dynamiteExplode;
+
+    [SerializeField]
+    private Text timeText;
     
 	// Use this for initialization
 	void Start ()
@@ -32,6 +36,11 @@ public class DynamiteExplodeTimer : MonoBehaviour
         {
             dynaAnimation.startDetonateAnimatio();
             animationStarted = true;
+        }
+
+        if(timeToDetonate > 0)
+        {
+            timeText.text =Mathf.Round(timeToDetonate - Time.time).ToString();
         }
 
         if(Time.time > timeToDetonate && timerStarted)
