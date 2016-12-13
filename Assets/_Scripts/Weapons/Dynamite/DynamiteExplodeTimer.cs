@@ -13,12 +13,12 @@ public class DynamiteExplodeTimer : MonoBehaviour
     private DynamiteAnimation dynaAnimation;
     private DynamiteExplode dynamiteExplode;
 
-    [SerializeField]
     private Text timeText;
     
 	// Use this for initialization
 	void Start ()
     {
+        timeText = GameObject.Find("DetonateTime").GetComponent<Text>();
         dynamiteExplode = gameObject.GetComponent<DynamiteExplode>();
         dynaAnimation = gameObject.GetComponent<DynamiteAnimation>();
     }
@@ -29,23 +29,27 @@ public class DynamiteExplodeTimer : MonoBehaviour
         timerStarted = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // start the detonate animation 0.4 seconds earlier
         if(Time.time > timeToDetonate - 0.4f && !animationStarted && timerStarted)
         {
             dynaAnimation.startDetonateAnimatio();
             animationStarted = true;
         }
 
+        //if the detonate time is set show the text
         if(timeToDetonate > 0)
         {
-            timeText.text =Mathf.Round(timeToDetonate - Time.time).ToString();
+            timeText.text = Mathf.Round(timeToDetonate - Time.time).ToString();
         }
 
+        //if the timer is done
         if(Time.time > timeToDetonate && timerStarted)
         {
-            //explode dynomite            
+            // set the text to nothing
+            timeText.text = "";
+            //explode dynomite 
             dynamiteExplode.detonate();
             timerStarted = false;
         }
