@@ -55,7 +55,6 @@ public class explosionForce : MonoBehaviour
 
     public void calculatePush(Vector2 hitDistance)
     {
-        Debug.Log("calculate werkt");
         position = this.transform.position;
         distance = hitDistance;
         distance.Normalize();
