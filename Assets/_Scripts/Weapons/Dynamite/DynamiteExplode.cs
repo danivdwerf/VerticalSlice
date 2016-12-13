@@ -17,7 +17,7 @@ public class DynamiteExplode : MonoBehaviour
     public void detonate()
     {
         endTurn.Ass();
-        GameObject destroyGround = Instantiate(circle, this.transform.position, Quaternion.identity) as GameObject;
+        Instantiate(circle, this.transform.position, Quaternion.identity);
 		ui.createExplosion (this.transform);
         Destroy(gameObject);
     }

@@ -7,19 +7,17 @@ public class PlayerHealth : MonoBehaviour
 	private int _maxHealth = 100;
 	private int _currentHealth;
     public Text myText;
-    private bool _isDead;
 
 	void Start ()
     {
         _currentHealth = _maxHealth;
-        _isDead = false;
 	}
 	
 	void Update ()
 	{
         if (_currentHealth < 1)
         {
-            _isDead = true;
+            //Dead
         }
 	}
 
