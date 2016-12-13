@@ -24,7 +24,6 @@ public class ExplotionHitDistance : MonoBehaviour
             {
                 players[i].GetComponent<explosionForce>().calculatePush(distance);
             }
-            Debug.Log("explotion position: " + this.transform.position + " player position: " + players[i].transform.position + " distance between the two: " + distance);
         }
 	}
 	
