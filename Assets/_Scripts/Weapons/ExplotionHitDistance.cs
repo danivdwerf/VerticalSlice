@@ -7,7 +7,7 @@ public class ExplotionHitDistance : MonoBehaviour
 	
     private GameObject[] players;
     private Vector2 distance;
-    // Use this for initialization
+
     void Start ()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
