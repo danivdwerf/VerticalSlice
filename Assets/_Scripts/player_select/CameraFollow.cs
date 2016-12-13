@@ -2,17 +2,11 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
-    private Vector3 position = new Vector3();
-    public Transform Target;
-    private float[] CurrentPlayer;
-
-    void Start()
-    {
-
-    }
+    [SerializeField]
+    private Transform target;
 
     void Update()
     {
-        
+        this.transform.position = target.position;
     }
 }
