@@ -32,7 +32,6 @@ public class explosionForce : MonoBehaviour
 
     private void pushPlayer()
     {
-        Debug.Log("push werkt");
         if (Mathf.Abs(velocity.x) > 0)
         {
             velocity.x = velocity.x - (0.5f * Time.deltaTime);
