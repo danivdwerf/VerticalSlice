@@ -15,12 +15,8 @@ public class BazookaShoot : MonoBehaviour
 	//Create reference to the shooting audioclip.\\
 	private AudioClip shootClip{get;set;}
 
-    private EndTurn endTurn;
-
     private void Start()
 	{
-        endTurn = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<EndTurn>();
-
         //Load in the projectile.\\
         projectile = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.projectilePath,typeof(GameObject));
 		//Check if loading succeeded.\\
@@ -50,8 +46,6 @@ public class BazookaShoot : MonoBehaviour
 	//Shoot a projectile.\\
 	public void shoot (float shootPower)
 	{
-        endTurn.Ass();
-
         //Instantiate a projectile.\\
         GameObject bullet = Instantiate(projectile) as GameObject;
 		//Set the instantiating position.\\
