@@ -18,15 +18,18 @@ public class EquipWeapon : MonoBehaviour
     public void equipWeapon(GameObject weapon)
     {
         //get selected player
-        GameObject player =  currentPlayer.currentSelectedPlayer();
+        GameObject player = currentPlayer.currentSelectedPlayer();
+
         //set selected game object on player
-		GameObject newGameobject =  Instantiate(weapon, player.transform.position, player.transform.rotation) as GameObject; 
+		GameObject newGameobject = Instantiate(weapon, player.transform.position, player.transform.rotation) as GameObject; 
+
 		//Point the weapon accoriding to the play
 		newGameobject.transform.localScale = player.transform.localScale;
+
 		//make new weapn a child of the player
         newGameobject.transform.parent = player.transform;
+
         //dequip last wapon
-        dequip.dequipLastWapon(newGameobject);
-            
+        dequip.dequipLastWapon(newGameobject);           
     }
 }

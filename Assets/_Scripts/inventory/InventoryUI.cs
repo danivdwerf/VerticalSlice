@@ -4,8 +4,12 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour 
 {
 	private Inventory inventory;
-	[SerializeField]private Button[] buttons;
-	[SerializeField]private GameObject inventoryPanel; 
+
+	[SerializeField]
+    private Button[] buttons;
+
+	[SerializeField]
+    private GameObject inventoryPanel; 
 
 	private void Start()
 	{
@@ -14,7 +18,12 @@ public class InventoryUI : MonoBehaviour
 		for (int i = 0; i < buttons.Length; i++)
 		{
 			int temp = i;
-			buttons[i].onClick.AddListener (delegate(){inventory.SelectWeapon(temp);hideInventory();});
+			buttons[i].onClick.AddListener 
+            (delegate()
+            {
+                inventory.SelectWeapon(temp);
+                hideInventory();
+            });
 		}
 	}
 
