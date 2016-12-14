@@ -18,7 +18,12 @@ public class CalculateDamage : MonoBehaviour
 		if (Mathf.Abs (distance.x)<=0.8f||Mathf.Abs(distance.y)<=0.5f)
 		{
 			int damage = (int)(50 - (Mathf.Abs(distance.x) * 56.25f));
-			health.damage (damage);
+
+            if(damage > 0)
+            {
+                health.damage(damage);
+            }
+			
 		}
 	}
 }

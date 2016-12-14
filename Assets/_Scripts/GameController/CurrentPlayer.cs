@@ -3,10 +3,6 @@ using System.Collections;
 
 public class CurrentPlayer : MonoBehaviour
 {
-    private EndTurn endTurn;
-    private PlayerInput playerInput;
-    //private PlayerMovement playerMovement;
-
     [SerializeField]
     private GameObject[] players;
     [SerializeField]
@@ -14,31 +10,28 @@ public class CurrentPlayer : MonoBehaviour
 
     void Start()
     {
-        endTurn = GetComponent<EndTurn>();
-        playerInput = GameObject.FindObjectOfType<PlayerInput>();
-        //playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
-
-        playerInput.enabled = true;
-        //playerMovement.enabled = true;
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
     {
-        current = endTurn.arrayPos;
-        if (endTurn.arrayPos == 0)
-        {
-            playerInput.enabled = true;
-            //playerMovement.enabled = true;
-        }
-        else
-        {
-            playerInput.enabled = false;
-            //playerMovement.enabled = false;
-        }
+ 
     }
 
     public GameObject currentSelectedPlayer()
     {
         return players[current];
+    }
+
+    public void nextPlayer()
+    {
+        if(current < players.Length - 1)
+        {
+            current++;
+        }
+        else
+        {
+            current = 0;
+        }
     }
 }

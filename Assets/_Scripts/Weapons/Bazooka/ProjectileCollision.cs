@@ -9,17 +9,21 @@ public class ProjectileCollision : MonoBehaviour
 
 	private ExplosionUI ui{ get; set;}
 
-	private void Start()
+    private EndTurn endTurn;
+
+    private void Start()
 	{
 		//Set references to the scripts.\\
 		levelDestroyer = GetComponent<CreateLevelDestroyer> ();
 		ui = GetComponent<ExplosionUI> ();
-	}
+        endTurn = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<EndTurn>();
+    }
 	//If the projectile collides with something...\\
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		//If the object is the ground.\\
-		if (other.gameObject.CompareTag (Tags.ground))
+        endTurn.Ass();
+        //If the object is the ground.\\
+        if (other.gameObject.CompareTag (Tags.ground))
 		{
 			//Let the levelDestroyer do it's stuff.\\
 			levelDestroyer.groundHit ();
