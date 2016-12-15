@@ -158,7 +158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play a quick two player game
+  m_Text: Play a quick two player game.
 --- !u!222 &53316172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -528,6 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 2106525931}
+  buttonText: {fileID: 53316171}
 --- !u!4 &1805899601
 Transform:
   m_ObjectHideFlags: 0
