@@ -8,12 +8,15 @@ public class EndTurn : MonoBehaviour
 
     private Timer timer;
     private CurrentPlayer currentPlayer;
+    private FollowPlayer followPlayer;
 
 	void Start ()
     {
         timer = GetComponent<Timer>();
         currentPlayer = GetComponent<CurrentPlayer>();
-	}
+        followPlayer = GameObject.Find("Main Camera").GetComponent<FollowPlayer>();
+
+    }
 	
 	void Update ()
     {
@@ -29,5 +32,6 @@ public class EndTurn : MonoBehaviour
         currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
         Debug.Log(currentPlayer.currentSelectedPlayer());
         timer.timeLeft = 0;
+        followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
     }
 }
