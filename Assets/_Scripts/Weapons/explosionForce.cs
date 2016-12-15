@@ -59,6 +59,13 @@ public class explosionForce : MonoBehaviour
         distance.Normalize();
         desiredVelocity = distance * maxSpeed;
         velocity = desiredVelocity / mass;
+
+        //fly higher
+        if(velocity.y >= 0)
+        {
+            velocity.y += 2;
+        }
+
         anim.SetBool("ExplotionHit", true);
         playerHit = true;
     }

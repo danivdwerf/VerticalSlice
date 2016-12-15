@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkIfSliding()
     {
-        if (distanceToGround() > 0.10f && distanceToGround() <= 0.18f && state != PlayerState.falling)
+        if (distanceToGround() > 0.1f && distanceToGround() <= 0.18f && state != PlayerState.falling)
         {
             state = PlayerState.sliding;
             anim.SetBool("slide", true);
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             rigid.velocity = new Vector2(jumpSpeed, jumpHeight);
-            if (jumpSpeed < -0.3f || jumpSpeed > 0.3f)
+            if (Mathf.Abs(jumpSpeed) > 0.3f)
             {
                 jumpSpeed -= 0.2f * transform.localScale.x;
             }
