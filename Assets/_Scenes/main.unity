@@ -1899,7 +1899,7 @@ Prefab:
         type: 2}
       propertyPath: myText
       value: 
-      objectReference: {fileID: 1695612834}
+      objectReference: {fileID: 677313696}
     - target: {fileID: 1879718179423610, guid: 2b901d2b114ea4c4b94074356e034a95, type: 2}
       propertyPath: m_Name
       value: PlayerRed
