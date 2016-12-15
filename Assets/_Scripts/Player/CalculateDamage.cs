@@ -3,27 +3,30 @@ using System.Collections;
 
 public class CalculateDamage : MonoBehaviour 
 {
-	private GameObject curPlayer;
-	private PlayerHealth health;
+	private GameObject[] players{ get; set;}
 	private void Start()
 	{
-		curPlayer = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<CurrentPlayer> ().currentSelectedPlayer();
-        health = curPlayer.GetComponent<PlayerHealth>();
-		findDistance ();
+		players = GameObject.FindGameObjectsWithTag(Tags.player);
+		calcDamage ();
 	}
 
-	private void findDistance()
+	private void calcDamage()
 	{
-		Vector2 distance = this.transform.position-curPlayer.transform.position;
-		if (Mathf.Abs (distance.x)<=0.8f||Mathf.Abs(distance.y)<=0.5f)
+		for (int i = 0; i < players.Length; i++)
 		{
-			int damage = (int)(50 - (Mathf.Abs(distance.x) * 56.25f));
+			Vector2 distance = this.transform.position - players[i].transform.position;
 
-            if(damage > 0)
-            {
-                health.damage(damage);
-            }
+			if (Mathf.Abs (distance.x) < 0.8f || Mathf.Abs (distance.y) < 0.5f)
+			{
+				PlayerHealth health = players[i].GetComponent<PlayerHealth> ();
+				int damage = (int)(50 - (Mathf.Abs (distance.x+distance.y) * 98.4f));
+				if (damage > 0)
+				{
+					Debug.Log ("Do " +damage+" damage to " + players [i].name);
+					health.damage (damage);
+				}
 			
+			}
 		}
 	}
 }

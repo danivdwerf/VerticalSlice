@@ -30,7 +30,6 @@ public class EndTurn : MonoBehaviour
         currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = false;
         currentPlayer.nextPlayer();
         currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
-        Debug.Log(currentPlayer.currentSelectedPlayer());
         timer.timeLeft = 0;
         followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
     }

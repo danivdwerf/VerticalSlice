@@ -193,7 +193,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Random.Range(1, 3000) == 9)
             {
-                Debug.Log("eating apple");
                 anim.SetBool("eatApple", true);
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleApple"))
