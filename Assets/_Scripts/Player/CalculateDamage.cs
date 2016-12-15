@@ -22,7 +22,6 @@ public class CalculateDamage : MonoBehaviour
 				int damage = (int)(50 - (Mathf.Abs (distance.x+distance.y) * 98.4f));
 				if (damage > 0)
 				{
-					Debug.Log ("Do " +damage+" damage to " + players [i].name);
 					health.damage (damage);
 				}
 			
