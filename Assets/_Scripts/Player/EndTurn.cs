@@ -10,27 +10,47 @@ public class EndTurn : MonoBehaviour
     private CurrentPlayer currentPlayer;
     private FollowPlayer followPlayer;
 
-	void Start ()
+    void Start()
     {
         timer = GetComponent<Timer>();
         currentPlayer = GetComponent<CurrentPlayer>();
         followPlayer = GameObject.Find("Main Camera").GetComponent<FollowPlayer>();
 
     }
-	
-	void Update ()
+
+    void Update()
     {
         if (timer.timeLeft <= 0.02f)
         {
             Ass();
         }
-	}
+    }
+
     public void Ass()
     {
         currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = false;
         currentPlayer.nextPlayer();
-        currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
-        timer.timeLeft = 0;
-        followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
+        StartCoroutine(Delay());
     }
+
+    IEnumerator WaitAndPrint()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return StartCoroutine("WaitAndPrint");
+        TurnEnd();
+        timer.timeLeft = 0;
+    }
+
+    public void TurnEnd()
+    {      
+            currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
+            followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
+    }
+    
+
+    
 }
