@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class DynamiteExplodeTimer : MonoBehaviour
 {
@@ -13,11 +14,18 @@ public class DynamiteExplodeTimer : MonoBehaviour
     private DynamiteAnimation dynaAnimation;
     private DynamiteExplode dynamiteExplode;
 
+    private AudioSource playAudio { get; set; }
+
+    private AudioClip fuseClip { get; set; }
+
     private Text timeText;
     
 	// Use this for initialization
 	void Start ()
     {
+        playAudio = GetComponent<AudioSource>();
+        fuseClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.fusePath, typeof(AudioClip));
+
         timeText = GameObject.Find("DetonateTime").GetComponent<Text>();
         dynamiteExplode = gameObject.GetComponent<DynamiteExplode>();
         dynaAnimation = gameObject.GetComponent<DynamiteAnimation>();
@@ -25,6 +33,8 @@ public class DynamiteExplodeTimer : MonoBehaviour
 	
     public void startTimer()
     {
+        playAudio.clip = fuseClip;
+        playAudio.Play();
         timeToDetonate = Time.time + detonateTime;
         timerStarted = true;
     }

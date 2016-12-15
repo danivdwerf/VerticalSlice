@@ -75,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
             state = PlayerState.falling;           
             anim.SetBool("Falling", true);
         }
+        if(gameObject.transform.position.y < -3.5)
+        {
+            Debug.Log("valt te ver");
+            gameObject.transform.position = new Vector3((Random.value * 8.5f)-4   ,1.5f,0);
+        }
        
     }
 

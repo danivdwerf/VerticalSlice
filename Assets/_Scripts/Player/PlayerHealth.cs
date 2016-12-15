@@ -24,10 +24,12 @@ public class PlayerHealth : MonoBehaviour
     public void damage(int damageAmount)
     {
         _currentHealth -= damageAmount;
+
         if(_currentHealth < 0)
         {
             _currentHealth = 0;
         }
+
 		myText.text = _currentHealth.ToString();
     }
 }

@@ -20,7 +20,7 @@ public class DynamiteMovement : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 100f);
 
-        if (hit.collider)
+        if (hit.collider && _startFall)
         {
             if (hit.collider.tag == Tags.ground)
             {

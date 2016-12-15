@@ -10,6 +10,9 @@ public class Paths : MonoBehaviour
 	public const string bazookadestructionPath = "Assets/prefabs/BazookaExplosionRange.prefab";
 	public const string explosion2Path = "Assets/Audio/Effects/Explosion2.wav";
 	public const string explosionParticlePath = "Assets/prefabs/Explosion.prefab";
+<<<<<<< HEAD
 	public const string pressedButtonPath = "Assets/Sprites/StartScene/buttonsDown.png";
+=======
     public const string fusePath = "Assets/Audio/Effects/Fuse.wav";
+>>>>>>> f2cc375a52dd2b0889e93411f786bfcb6fc32134
 }
