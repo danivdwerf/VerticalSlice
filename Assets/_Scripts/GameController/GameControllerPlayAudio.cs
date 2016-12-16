@@ -22,19 +22,6 @@ public class GameControllerPlayAudio : MonoBehaviour
 
     public void PlayAudio(AudioClip clip)
     {
-        for (int i = 0; i < sources.Count - 1; i++)
-        {
-            if (clip.name == "RocketRelease")
-            {
-                if (sources[i].clip.name == "RocketPowerup")
-                {
-                    Debug.Log("stop powerup");
-                    sources[i].clip = clip;
-                    sources[i].PlayOneShot(clip);
-                }
-            }
-        }
-
         for (int j = 0; j < sources.Count - 1; j++)
         {
             if (clip != sources[j].clip)
