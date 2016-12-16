@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 60
+  timerText: {fileID: 1376998916}
 --- !u!114 &1005564936
 MonoBehaviour:
   m_ObjectHideFlags: 0

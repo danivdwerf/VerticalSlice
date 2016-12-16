@@ -1,34 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControllerPlayAudio : MonoBehaviour 
+public class GameControllerPlayAudio : MonoBehaviour
 {
-	private AudioSource[] source;
+    private AudioSource[] source;
 
-	private void Start()
-	{
-		source = GetComponents<AudioSource>();
-	}
+    private bool notSameSound = false;
 
-	public void PlayAudio(AudioClip clip)
-	{
-<<<<<<< HEAD
-        for(int i = 0; i < source.Length-1; i++)
+    private void Start()
+    {
+        source = GetComponents<AudioSource>();
+    }
+
+    public void PlayAudio(AudioClip clip)
+    {
+        for (int j = 0; j < source.Length - 1; j++)
         {
-            if(source[i].isPlaying == false)
+            if (clip != source[j].clip)
             {
-                source[i].clip = clip;
-                source[i].loop = looping;
-                source[i].PlayOneShot(clip);
-                i = source.Length;
-            }           
-        }		
-=======
-		if (clip != source.clip)
-		{
-			source.clip = clip;
-			source.Play();
-		}
->>>>>>> 3c43cfc2a3bdbc04f3fec18deac615e945163660
-	}
-}
+                notSameSound = true;
+            }
+            else
+            {
+                notSameSound = false;
+                j = source.Length;
+            }
+        }
+
+        if (notSameSound)
+        {
+            for (int i = 0; i < source.Length - 1; i++)
+            {
+                if (source[i].isPlaying == false)
+                {
+                    source[i].clip = clip;
+                    source[i].PlayOneShot(clip);
+                    i = source.Length;
+                }
+            }
+        }       
+    }
+}	
+
