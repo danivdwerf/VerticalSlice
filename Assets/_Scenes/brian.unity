@@ -1882,6 +1882,11 @@ Prefab:
       propertyPath: m_Name
       value: PlayerBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 114428742226075748, guid: b6ec842fb48504e45818a7d3b87d7b51,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6ec842fb48504e45818a7d3b87d7b51, type: 2}
   m_IsPrefabParent: 0
@@ -2634,6 +2639,11 @@ Prefab:
         type: 2}
       propertyPath: m_Radius
       value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 114891799105547246, guid: 2b901d2b114ea4c4b94074356e034a95,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b901d2b114ea4c4b94074356e034a95, type: 2}
