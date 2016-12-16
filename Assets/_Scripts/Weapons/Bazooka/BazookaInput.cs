@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 //Fetch input for the bazooka.\\
 public class BazookaInput : MonoBehaviour 
 {
