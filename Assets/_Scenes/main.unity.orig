@@ -1803,7 +1803,6 @@ GameObject:
   - component: {fileID: 1359062812}
   - component: {fileID: 1359062814}
   - component: {fileID: 1359062815}
-  - component: {fileID: 1359062816}
   m_Layer: 0
   m_Name: Gamecontroller
   m_TagString: GameController
@@ -2036,22 +2035,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359062802}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 11500000, guid: a82e21189f4044f4c8c214108630d19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+=======
   m_Script: {fileID: 11500000, guid: 1555c0b2297f23e4baa53416c140bada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clouds:
   - {fileID: 1413509746032562, guid: 00b9b86553cd1c7458707d30debb019b, type: 2}
---- !u!114 &1359062816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359062802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82e21189f4044f4c8c214108630d19d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+>>>>>>> 9bd16365e810711bff28c8a53965098f38e4ca5c
 --- !u!1001 &1439526100
 Prefab:
   m_ObjectHideFlags: 0
