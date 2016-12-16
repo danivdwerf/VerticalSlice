@@ -12,7 +12,7 @@ public class BazookaAiming : MonoBehaviour
 	{
 		//Set the variable values.\\
 		angle = 0f;
-		maxAngle = 50f;
+		maxAngle = 80f;
 	}
 
 	//Update the aiming rotation.\\

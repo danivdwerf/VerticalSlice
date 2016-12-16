@@ -22,7 +22,7 @@ public class ProjectileMovement : MonoBehaviour
 		//Set reference to the rigidbody component.\\
 		rigid = GetComponent<Rigidbody2D> ();
 		//Set the speed of the projectile.\\
-		speed = 4f;
+		speed = 6f;
 		//Add a force to the forward position by the charging time times the speed.\\
 		rigid.AddForce (transform.right * speed * time, ForceMode2D.Impulse);
 	}

@@ -8,7 +8,6 @@ public class StartScreenUI : MonoBehaviour
 {
 	[SerializeField]private Button startButton;
 	[SerializeField]private Text buttonText;
-	private Sprite pressedSprite;
 	private LoadScene loadingScript;
 	EventTrigger.Entry enter;
 	EventTrigger.Entry exit;
@@ -16,7 +15,6 @@ public class StartScreenUI : MonoBehaviour
 	private void Start()
 	{
 		loadingScript = GetComponent<LoadScene> ();
-		pressedSprite = loadSprite (); 
 
 		buttonListeners ();
 		hideText ();
@@ -47,11 +45,4 @@ public class StartScreenUI : MonoBehaviour
 		exit.callback.AddListener ((eventData) =>{hideText ();});
 		startButton.GetComponent<EventTrigger> ().triggers.Add (exit);
 	}
-
-	private Sprite loadSprite()
-	{
-		Sprite sprite = AssetDatabase.LoadAssetAtPath (Paths.pressedButtonPath, typeof(Sprite))as Sprite;
-		return sprite;
-	}
-
 }
