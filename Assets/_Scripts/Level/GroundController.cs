@@ -20,10 +20,7 @@ public class GroundController : MonoBehaviour
         createCollider = GetComponent<CreateLevelCollider>();      
         //reference to sprite renderer
         sr = GetComponent<SpriteRenderer>(); 
-		//createCol = GetComponent<CreateLevelCollider> ();
-		//Load in the texture
-		string path = "Assets/Sprites/Level/Worms_level.png";
-		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(path,typeof(Texture2D));
+		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(Paths.levelpath,typeof(Texture2D));
 		//Create clone of the texture, so we won't alter(fuck up) the original
 		Texture2D tex_clone = (Texture2D) Instantiate(tex);
 		//Create a sprite from the cloned texture and set it as texture in the spriterenderer 
