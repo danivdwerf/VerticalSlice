@@ -1997,6 +1997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 60
+  timerText: {fileID: 961122710}
 --- !u!114 &1359062813
 MonoBehaviour:
   m_ObjectHideFlags: 0
