@@ -1,9 +1,15 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Animator anim;
+
+    private GameControllerPlayAudio playAudio;
+
+    private AudioClip jumpClip;
+    private AudioClip landClip;
 
     private PlayerState state = PlayerState.idle;
     private bool sliding;
@@ -30,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        playAudio = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<GameControllerPlayAudio>();
+
+        jumpClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.jumpAudio, typeof(AudioClip));
+        landClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.landAudio, typeof(AudioClip));
+
         speed = 0f;
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -66,7 +77,8 @@ public class PlayerMovement : MonoBehaviour
     private void checkIfFalling()
     {
         if (distanceToGround() <= 0.10f && anim.GetBool("Falling") == true)
-        {                     
+        {
+            playAudio.PlayAudio(landClip, false);
             anim.SetBool("Falling", false);
             state = PlayerState.standingUp;
         }
@@ -98,8 +110,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(float js, float jh)
     {
         if (!jumpCharge && !jump && state == PlayerState.idle)
-        {
-
+        {          
             jumpSpeed = js * transform.localScale.x;
             jumpHeight = jh;
             jumpCharge = true;
@@ -112,11 +123,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump") && jumpCharge && Time.time > timeTojumpCharge + 0.5f)
         {
+            
             AnimatorStateInfo animationState = anim.GetCurrentAnimatorStateInfo(0);
             timeTojumpCharge = (animationState.length + Time.time) - 0.1f;
         }
         if (jumpCharge && Time.time > timeTojumpCharge)
         {
+            playAudio.PlayAudio(jumpClip, false);
             anim.SetBool("Jump", false);
             transform.position += new Vector3(0, 0.1f, 0);
             jumpCharge = false;
