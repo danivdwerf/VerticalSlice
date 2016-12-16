@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioClip jumpClip;
     private AudioClip landClip;
+    private AudioClip appleClip;
 
     private PlayerState state = PlayerState.idle;
     private bool sliding;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         jumpClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.jumpAudio, typeof(AudioClip));
         landClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.landAudio, typeof(AudioClip));
+        appleClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.appleAudio, typeof(AudioClip));
 
         speed = 0f;
         rigid = GetComponent<Rigidbody2D>();
@@ -210,10 +212,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Random.Range(1, 3000) == 9)
             {
+                
                 anim.SetBool("eatApple", true);
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleApple"))
             {
+                playAudio.PlayAudio(appleClip, false);
                 anim.SetBool("eatApple", false);
             }
 
