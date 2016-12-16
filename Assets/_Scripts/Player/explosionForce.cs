@@ -20,6 +20,7 @@ public class explosionForce : MonoBehaviour
 
     private void Update()
     {
+        
         if (playerHit)
         {
             pushPlayer();
@@ -42,6 +43,10 @@ public class explosionForce : MonoBehaviour
             velocity.y = velocity.y - (10f * Time.deltaTime);
         }
 
+        if (transform.position.y < -3.5)
+        {
+            position = new Vector3((Random.value * 8.5f) - 4, 4f, 0);
+        }
 
         float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
 
