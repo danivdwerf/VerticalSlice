@@ -1,44 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class GameControllerPlayAudio : MonoBehaviour
 {
-    private AudioSource[] source;
+    private List<AudioSource> sources = new List<AudioSource>();
 
-    private bool notSameSound = false;
+    private bool notSameSound = true;
 
-    private void Start()
+    private void Update()
     {
-        source = GetComponents<AudioSource>();
+        for (int i = sources.Count -1; i >= 0; i--)
+        {
+            if (sources[i].isPlaying == false)
+            {
+                Destroy(sources[i]);
+                sources.Remove(sources[i]);                
+                break;
+            }
+        }
     }
 
     public void PlayAudio(AudioClip clip)
     {
-        for (int j = 0; j < source.Length - 1; j++)
+        for (int i = 0; i < sources.Count - 1; i++)
         {
-            if (clip != source[j].clip)
+            if (clip.name == "RocketRelease")
+            {
+                if (sources[i].clip.name == "RocketPowerup")
+                {
+                    Debug.Log("stop powerup");
+                    sources[i].clip = clip;
+                    sources[i].PlayOneShot(clip);
+                }
+            }
+        }
+
+        for (int j = 0; j < sources.Count - 1; j++)
+        {
+            if (clip != sources[j].clip)
             {
                 notSameSound = true;
             }
             else
             {
                 notSameSound = false;
-                j = source.Length;
+                break;
             }
         }
 
         if (notSameSound)
         {
-            for (int i = 0; i < source.Length - 1; i++)
-            {
-                if (source[i].isPlaying == false)
-                {
-                    source[i].clip = clip;
-                    source[i].PlayOneShot(clip);
-                    i = source.Length;
-                }
-            }
-        }       
+            AudioSource source;
+            source = gameObject.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.PlayOneShot(clip);
+            sources.Add(source);
+        }
+        
     }
 }	
 

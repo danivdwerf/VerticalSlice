@@ -26,7 +26,6 @@ public class EndTurn : MonoBehaviour
         {
             Ass();
         }
-        Debug.Log(timer.timeLeft);
     }
 
     public void Ass()
