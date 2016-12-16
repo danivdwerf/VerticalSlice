@@ -24,7 +24,7 @@ public class GroundController : MonoBehaviour
 		//Create clone of the texture, so we won't alter(fuck up) the original
 		Texture2D tex_clone = (Texture2D) Instantiate(tex);
 		//Create a sprite from the cloned texture and set it as texture in the spriterenderer 
-		sr.sprite = Sprite.Create(tex_clone, new Rect(0f, 0f, tex_clone.width, tex_clone.height), new Vector2(0.5f, 0.5f), 100f);
+		sr.sprite = Sprite.Create(tex_clone, new Rect(0f, 0f, tex.width, tex.height), new Vector2(0.5f, 0.5f));
 		//make a transparant colour(Color.clear would also work, but now you kind of make it yourself)
 		hole = new Color(0f, 0f, 0f, 0f);
 		//Set the properties according to the sizes of the new sprite 
