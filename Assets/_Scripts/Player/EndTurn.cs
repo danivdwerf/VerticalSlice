@@ -28,8 +28,6 @@ public class EndTurn : MonoBehaviour
 
     public void Ass()
     {
-        currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = false;
-        currentPlayer.nextPlayer();
         StartCoroutine(Delay());
     }
 
@@ -46,11 +44,10 @@ public class EndTurn : MonoBehaviour
     }
 
     public void TurnEnd()
-    {      
+    {
+            currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = false;
+            currentPlayer.nextPlayer();
             currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
             followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
-    }
-    
-
-    
+    }    
 }
