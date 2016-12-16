@@ -9,6 +9,8 @@ public class EndTurn : MonoBehaviour
     private Timer timer;
     private CurrentPlayer currentPlayer;
     private FollowPlayer followPlayer;
+    private SelectInput selectInput;
+    private InventoryInput inventoryInput;
 
     private bool go;
 
@@ -17,6 +19,8 @@ public class EndTurn : MonoBehaviour
         timer = GetComponent<Timer>();
         currentPlayer = GetComponent<CurrentPlayer>();
         followPlayer = GameObject.Find("Main Camera").GetComponent<FollowPlayer>();
+        selectInput = GetComponent<SelectInput>();
+        inventoryInput = GetComponent<InventoryInput>();
         go = true;
     }
 
@@ -32,6 +36,8 @@ public class EndTurn : MonoBehaviour
     {
         go = false;
         timer.timeLeft = 5.0f;
+        selectInput.GetComponent<SelectInput>().enabled = false;
+        inventoryInput.enabled = false;
         StartCoroutine(Delay());
     }
 
@@ -51,8 +57,11 @@ public class EndTurn : MonoBehaviour
     {
         currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = false;
         currentPlayer.nextPlayer();
-        currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
         followPlayer.otherPlayer(currentPlayer.currentSelectedPlayer());
+        currentPlayer.currentSelectedPlayer().GetComponent<PlayerInput>().enabled = true;
+        selectInput.enabled = true;
+        inventoryInput.enabled = true;
+
         go = true;
     }    
 }
