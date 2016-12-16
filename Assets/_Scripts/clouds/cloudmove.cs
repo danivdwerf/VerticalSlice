@@ -18,7 +18,7 @@ public class cloudmove : MonoBehaviour
 
         if(gameObject.transform.position.x > 8)
         {
-            gameObject.transform.position = new Vector3(-7, ((Random.value + 0.1f) * 4) - 1, 1);
+            gameObject.transform.position = new Vector3(-7, ((Random.value + 0.1f) * 4) - 1, 3);
         }
 	}
 }

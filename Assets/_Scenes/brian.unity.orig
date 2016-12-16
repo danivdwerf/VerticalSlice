@@ -2695,14 +2695,16 @@ Prefab:
       propertyPath: m_Radius
       value: 0.04
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 4747806811381980, guid: 2b901d2b114ea4c4b94074356e034a95, type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+=======
     - target: {fileID: 114891799105547246, guid: 2b901d2b114ea4c4b94074356e034a95,
         type: 2}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747806811381980, guid: 2b901d2b114ea4c4b94074356e034a95, type: 2}
-      propertyPath: m_LocalScale.x
-      value: -1
+>>>>>>> 4e5281f2829031369aa47f133c115d3c4b5ce0d1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b901d2b114ea4c4b94074356e034a95, type: 2}
