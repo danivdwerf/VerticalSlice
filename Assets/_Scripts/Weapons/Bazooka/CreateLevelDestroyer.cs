@@ -1,20 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 //Create the circle that destroys the level.\\
 public class CreateLevelDestroyer : MonoBehaviour 
 {
 	//Create reference to the cirlce.\\
-	private GameObject circle{get;set;}
+	[SerializeField]private GameObject circle;
 	//Create reference to the explosion GameObject.\\
 	private GameObject explosion{ get; set;}
 
 	private void Start()
 	{
-		//Load in the GameObject.\\
-		circle = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.bazookadestructionPath,typeof(GameObject));
 		//Check if the loading succeeded.\\
 		if (!circle)
 		{

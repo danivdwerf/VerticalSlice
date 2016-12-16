@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 public class GroundController : MonoBehaviour 
 {
     //public AdvancedPolygonCollider advancedpolygon;
@@ -11,6 +8,7 @@ public class GroundController : MonoBehaviour
     private SpriteRenderer sr;
 	private PolygonCollider2D col;
 	private Color hole; 
+	[SerializeField] private Texture2D tex;
     
     //private CreateLevelCollider createCol;
     private float widthWorld, heightWorld;
@@ -22,7 +20,6 @@ public class GroundController : MonoBehaviour
         createCollider = GetComponent<CreateLevelCollider>();      
         //reference to sprite renderer
         sr = GetComponent<SpriteRenderer>(); 
-		Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(Paths.levelpath,typeof(Texture2D));
 		//Create clone of the texture, so we won't alter(fuck up) the original
 		Texture2D tex_clone = (Texture2D) Instantiate(tex);
 		//Create a sprite from the cloned texture and set it as texture in the spriterenderer 

@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 public class PlayerMovement : MonoBehaviour
 {
     private Animator anim;
 
     private GameControllerPlayAudio playAudio;
 
-    private AudioClip jumpClip;
-    private AudioClip landClip;
-    private AudioClip appleClip;
+	[SerializeField]private AudioClip jumpClip;
+	[SerializeField]private AudioClip landClip;
+	[SerializeField]private AudioClip appleClip;
 
     private PlayerState state = PlayerState.idle;
     private bool sliding;
@@ -40,10 +36,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playAudio = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<GameControllerPlayAudio>();
-
-        jumpClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.jumpAudio, typeof(AudioClip));
-        landClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.landAudio, typeof(AudioClip));
-        appleClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.appleAudio, typeof(AudioClip));
 
         speed = 0f;
         rigid = GetComponent<Rigidbody2D>();

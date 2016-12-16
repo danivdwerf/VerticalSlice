@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879718179423610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.001, y: -0.698, z: 0}
+  m_LocalPosition: {x: -5.04, y: 0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7158a24c5c944ecfb2ed4e54002bcbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpClip: {fileID: 8300000, guid: 848ff8d012cc21c4a92d1f6c7d132a37, type: 3}
+  landClip: {fileID: 8300000, guid: 4b3394c4a7ab145a1950792598e8d82e, type: 3}
+  appleClip: {fileID: 8300000, guid: 4c1a8ea1577904affa07ef21bb862bc7, type: 3}
 --- !u!114 &114537999269876776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475186ae7bdfe8c4f852ddc4585615a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHealth: 0
   myText: {fileID: 0}
 --- !u!212 &212059520619226492
 SpriteRenderer:

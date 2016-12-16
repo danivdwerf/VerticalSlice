@@ -16,18 +16,18 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011320501952}
-  - 212: {fileID: 212000012578721238}
-  - 60: {fileID: 60000013292883542}
-  - 50: {fileID: 50000011508577556}
-  - 114: {fileID: 114000012845753854}
-  - 114: {fileID: 114000010916616324}
-  - 114: {fileID: 114000012146678154}
-  - 114: {fileID: 114000013319323450}
-  - 114: {fileID: 114000011990754110}
-  - 114: {fileID: 114000011968170988}
+  - component: {fileID: 4000011320501952}
+  - component: {fileID: 212000012578721238}
+  - component: {fileID: 60000013292883542}
+  - component: {fileID: 50000011508577556}
+  - component: {fileID: 114000012845753854}
+  - component: {fileID: 114000010916616324}
+  - component: {fileID: 114000012146678154}
+  - component: {fileID: 114000013319323450}
+  - component: {fileID: 114000011990754110}
+  - component: {fileID: 114000011968170988}
   m_Layer: 0
   m_Name: BazookaProjectile
   m_TagString: Untagged
@@ -44,23 +44,26 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.78, y: 0.282, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50000011508577556
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011397065014}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0.5
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca806fa0984345f6a78ec3b1e6d85a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 183966, guid: 012ba6b5e35be9c4fa678dea2a931de7, type: 2}
 --- !u!114 &114000011990754110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ef89b4fe43748ed81551ff0fab9b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 1000012170416904, guid: 4c387d1bd08524640b46d2ccf19d7668, type: 2}
 --- !u!114 &114000012845753854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abb3c5513f6c401d967ff786781c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smokeCloud: {fileID: 1000012714956682, guid: 4196af757346c439cb2e7d5dad1aeba8, type: 2}
 --- !u!212 &212000012578721238
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -176,7 +182,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -184,7 +192,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
