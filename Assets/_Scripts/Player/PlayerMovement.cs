@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkIfSliding()
     {
-        if (distanceToGround() > 0.1f && distanceToGround() <= 0.18f && state != PlayerState.falling)
+        if (distanceToGround() > 0.085f && distanceToGround() <= 0.18f && state != PlayerState.falling)
         {
             state = PlayerState.sliding;
             anim.SetBool("slide", true);
@@ -212,12 +212,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Random.Range(1, 3000) == 9)
             {
-                
+                playAudio.PlayAudio(appleClip, false);
                 anim.SetBool("eatApple", true);
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleApple"))
             {
-                playAudio.PlayAudio(appleClip, false);
                 anim.SetBool("eatApple", false);
             }
 
