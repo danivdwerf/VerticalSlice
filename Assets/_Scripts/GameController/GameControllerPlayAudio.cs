@@ -3,17 +3,24 @@ using System.Collections;
 
 public class GameControllerPlayAudio : MonoBehaviour 
 {
-	private AudioSource source;
+	private AudioSource[] source;
 
 	private void Start()
 	{
-		source = GetComponent<AudioSource> ();
+		source = GetComponents<AudioSource>();
 	}
 
 	public void PlayAudio(AudioClip clip,bool looping)
 	{
-		source.clip = clip;
-		source.loop = looping;
-		source.PlayOneShot (clip);
+        for(int i = 0; i < source.Length-1; i++)
+        {
+            if(source[i].isPlaying == false)
+            {
+                source[i].clip = clip;
+                source[i].loop = looping;
+                source[i].PlayOneShot(clip);
+                i = source.Length;
+            }           
+        }		
 	}
 }
