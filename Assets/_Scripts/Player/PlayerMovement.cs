@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkIfFalling()
     {
-        if (distanceToGround() <= 0.10f && anim.GetBool("Falling") == true)
+        if (distanceToGround() <= 0.08f && anim.GetBool("Falling") == true)
         {
             playAudio.PlayAudio(landClip);
             anim.SetBool("Falling", false);
