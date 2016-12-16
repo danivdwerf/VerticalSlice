@@ -41,14 +41,9 @@ public class EndTurn : MonoBehaviour
         StartCoroutine(Delay());
     }
 
-    IEnumerator WaitAndPrint()
-    {
-        yield return new WaitForSeconds(5);
-    }
-
     IEnumerator Delay()
     {
-        yield return StartCoroutine("WaitAndPrint");
+		yield return new WaitForSeconds(5);
         TurnEnd();
         timer.timeLeft = 60;
     }
