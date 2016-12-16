@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(gameObject.transform.position.y < -3.5)
         {
-            gameObject.transform.position = new Vector3((Random.value * 8.5f)-4   ,1.5f,0);
+            gameObject.transform.position = new Vector3((Random.value * 8.5f)-4 ,1.5f,0);
         }
        
     }
