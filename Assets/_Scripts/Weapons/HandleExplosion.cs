@@ -39,7 +39,7 @@ public class HandleExplosion : MonoBehaviour
 			//Destroy the ground...\\
 			groundController.DestroyGround(circle);
 			//Play the explosion sound.\\
-			audioHandler.PlayAudio (explosionSound,false);
+			audioHandler.PlayAudio (explosionSound);
 			//and this circle.\\
 			Destroy(gameObject);
 		}

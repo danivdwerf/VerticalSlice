@@ -10,10 +10,12 @@ public class GameControllerPlayAudio : MonoBehaviour
 		source = GetComponent<AudioSource> ();
 	}
 
-	public void PlayAudio(AudioClip clip,bool looping)
+	public void PlayAudio(AudioClip clip)
 	{
-		source.clip = clip;
-		source.loop = looping;
-		source.PlayOneShot (clip);
+		if (clip != source.clip)
+		{
+			source.clip = clip;
+			source.Play();
+		}
 	}
 }
