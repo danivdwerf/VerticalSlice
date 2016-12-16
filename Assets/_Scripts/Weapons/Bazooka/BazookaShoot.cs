@@ -55,7 +55,7 @@ public class BazookaShoot : MonoBehaviour
 		//Set the shooting power of the projectile.\\
 		bullet.GetComponent<ProjectileMovement> ().Settime = shootPower;
 		//Play the shooting audio.\\
-		playAudio.PlayAudio (shootClip,false);
+		playAudio.PlayAudio (shootClip);
 		//Set shooting to false.\\
 		inputScript.GetShooting = false;
 		//Unequip weapon.\\

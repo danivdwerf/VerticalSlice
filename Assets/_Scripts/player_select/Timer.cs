@@ -6,18 +6,19 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft = 60.0f;
 
+    [SerializeField]
     private Text timerText;
 
     private void Start()
     {
-        timerText = GameObject.Find("TimerText").GetComponent<Text>();
+
     }
 
     public void Update()
     {
         timeLeft -= Time.deltaTime;
 
-        if (timeLeft == 0.0f)
+        if (timeLeft <= 0.0f)
         {
             timeLeft = 60.0f;
         }

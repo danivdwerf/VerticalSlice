@@ -10,8 +10,9 @@ public class GameControllerPlayAudio : MonoBehaviour
 		source = GetComponents<AudioSource>();
 	}
 
-	public void PlayAudio(AudioClip clip,bool looping)
+	public void PlayAudio(AudioClip clip)
 	{
+<<<<<<< HEAD
         for(int i = 0; i < source.Length-1; i++)
         {
             if(source[i].isPlaying == false)
@@ -22,5 +23,12 @@ public class GameControllerPlayAudio : MonoBehaviour
                 i = source.Length;
             }           
         }		
+=======
+		if (clip != source.clip)
+		{
+			source.clip = clip;
+			source.Play();
+		}
+>>>>>>> 3c43cfc2a3bdbc04f3fec18deac615e945163660
 	}
 }

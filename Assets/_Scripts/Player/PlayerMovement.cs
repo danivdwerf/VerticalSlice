@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (distanceToGround() <= 0.10f && anim.GetBool("Falling") == true)
         {
-            playAudio.PlayAudio(landClip, false);
+            playAudio.PlayAudio(landClip);
             anim.SetBool("Falling", false);
             state = PlayerState.standingUp;
         }
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (jumpCharge && Time.time > timeTojumpCharge)
         {
-            playAudio.PlayAudio(jumpClip, false);
+            playAudio.PlayAudio(jumpClip);
             anim.SetBool("Jump", false);
             transform.position += new Vector3(0, 0.1f, 0);
             jumpCharge = false;
@@ -212,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Random.Range(1, 3000) == 9)
             {
-                playAudio.PlayAudio(appleClip, false);
+                playAudio.PlayAudio(appleClip);
                 anim.SetBool("eatApple", true);
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("IdleApple"))
