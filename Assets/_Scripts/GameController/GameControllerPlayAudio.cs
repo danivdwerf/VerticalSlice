@@ -40,7 +40,7 @@ public class GameControllerPlayAudio : MonoBehaviour
             AudioSource source;
             source = gameObject.AddComponent<AudioSource>();
             source.clip = clip;
-            source.PlayOneShot(clip);
+            source.Play();
             sources.Add(source);
         }
         
