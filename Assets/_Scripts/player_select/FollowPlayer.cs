@@ -11,7 +11,14 @@ public class FollowPlayer : MonoBehaviour {
 
     void Update()
     {
-        this.transform.position = target.transform.position + new Vector3(0, 0, distance);
+        if(target != null)
+        {
+            this.transform.position = target.transform.position + new Vector3(0, 0, distance);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }       
     }
 
     public void otherPlayer(GameObject player)
