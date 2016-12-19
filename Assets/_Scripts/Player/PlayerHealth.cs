@@ -6,6 +6,15 @@ public class PlayerHealth : MonoBehaviour
 {
 	private int _maxHealth = 100;
 	[SerializeField]private int _currentHealth;
+    public int GetPlayerHealth
+    {
+        get
+        {
+            return _currentHealth;
+        }
+    }
+
+
     public Text myText;
 
 	void Start ()
