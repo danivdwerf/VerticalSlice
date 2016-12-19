@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class DynamiteExplodeTimer : MonoBehaviour
 {
@@ -18,7 +15,7 @@ public class DynamiteExplodeTimer : MonoBehaviour
 
     private AudioSource playAudio { get; set; }
 
-    private AudioClip fuseClip { get; set; }
+	[SerializeField]private AudioClip fuseClip;
 
     private Text timeText;
     
@@ -26,7 +23,6 @@ public class DynamiteExplodeTimer : MonoBehaviour
 	void Start ()
     {
         playAudio = GetComponent<AudioSource>();
-        fuseClip = (AudioClip)AssetDatabase.LoadAssetAtPath(Paths.fusePath, typeof(AudioClip));
 
         timeText = GameObject.Find("DetonateTime").GetComponent<Text>();
         dynamiteExplode = gameObject.GetComponent<DynamiteExplode>();

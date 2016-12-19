@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 //Fetch input for the bazooka.\\
 public class BazookaInput : MonoBehaviour 
 {
@@ -13,7 +10,7 @@ public class BazookaInput : MonoBehaviour
 	//Create reference to the inventoryUI script.\\
 	private InventoryUI inventoryUI{get;set;}
 	//Create reference to the charging audioclip.\\
-	private AudioClip chargeClip{get;set;}
+	[SerializeField]private AudioClip chargeClip;
 	//Create reference to the aimingScript.\\
 	private BazookaAiming aiming{get;set;}
 	//Create reference to the aimingUIScript.\\
@@ -41,8 +38,6 @@ public class BazookaInput : MonoBehaviour
 
 	private void Start()
 	{
-		//Load the audioclip.\\
-		chargeClip = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.chargingAudioPath,typeof(AudioClip));
 		//Check if the loading succeeded.\\
 		if (!chargeClip)
 		{

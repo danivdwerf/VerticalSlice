@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 //Shoot a projectie\\
 public class BazookaShoot : MonoBehaviour 
 {
 	//Create reference to the projectile.\\
-	private GameObject projectile{get;set;}
+	[SerializeField]private GameObject projectile;
 	//Create reference to the muzzle.\\
 	private Transform muzzle{get;set;}
 	//Create reference to the audioHandler.\\
@@ -15,12 +12,10 @@ public class BazookaShoot : MonoBehaviour
 	//Create reference to the inputScript.\\
 	private BazookaInput inputScript{get;set;}
 	//Create reference to the shooting audioclip.\\
-	private AudioClip shootClip{get;set;}
+	[SerializeField]private AudioClip shootClip;
 
     private void Start()
 	{
-        //Load in the projectile.\\
-        projectile = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.projectilePath,typeof(GameObject));
 		//Check if loading succeeded.\\
 		if(!projectile)
 		{
@@ -28,8 +23,6 @@ public class BazookaShoot : MonoBehaviour
 			Debug.LogError ("The GameObject Projectile is null! Did you use the correct path?");
 			return;
 		}
-		//Load in the audioclip.\\
-		shootClip = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.bazookaShootAudio,typeof(AudioClip));
 		//Check if loading succeeded.\\
 		if (!shootClip)
 		{

@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class CreateSmoke : MonoBehaviour 
 {
-	private GameObject smokeCloud;
+	[SerializeField]private GameObject smokeCloud;
 
 	private void Start()
 	{
-		smokeCloud = (GameObject)AssetDatabase.LoadAssetAtPath (Paths.smokePath,typeof(GameObject));
 		if (!smokeCloud)
 		{
 			Debug.LogError ("SmokeCloud is NULL!!");

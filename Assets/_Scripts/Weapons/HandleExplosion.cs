@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 //Take a chuck out of the level.\\
 public class HandleExplosion : MonoBehaviour 
 {
 	//Create reference to the explosion audioclip.\\
-	private AudioClip explosionSound{get;set;}
+	[SerializeField]private AudioClip explosionSound;
 	//Create reference to the audioHandler script.\\
 	private GameControllerPlayAudio audioHandler{get;set;}
 	//Reference to the level.\\
@@ -17,8 +14,6 @@ public class HandleExplosion : MonoBehaviour
 
 	private void Start()
 	{
-		//Load the audioClip.\\
-		explosionSound = (AudioClip)AssetDatabase.LoadAssetAtPath (Paths.explosion2Path,typeof(AudioClip));
 		//If the Loading failed...\\
 		if (!explosionSound)
 		{

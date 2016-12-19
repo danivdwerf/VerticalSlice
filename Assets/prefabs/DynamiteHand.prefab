@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1075869635e23a488657f02d753bb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuseClip: {fileID: 8300000, guid: 1515f31dbacc3c84387f9a61021557e9, type: 3}
 --- !u!114 &114302097852760490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca806fa0984345f6a78ec3b1e6d85a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 183966, guid: 012ba6b5e35be9c4fa678dea2a931de7, type: 2}
 --- !u!114 &114345610833042598
 MonoBehaviour:
   m_ObjectHideFlags: 1
