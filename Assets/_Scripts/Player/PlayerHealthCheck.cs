@@ -15,7 +15,7 @@ public class PlayerHealthCheck : MonoBehaviour
 	
 	void Update ()
     {
-		if(playerHealth.GetPlayerHealth > 0 && playerHealth.GetPlayerHealth < 90)
+		if(playerHealth.GetPlayerHealth > 0 && playerHealth.GetPlayerHealth < 20)
         {
             anim.SetBool("hurt", true);
         }

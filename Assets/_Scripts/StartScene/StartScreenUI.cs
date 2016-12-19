@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine.EventSystems;
 
 public class StartScreenUI : MonoBehaviour 
 {
 	[SerializeField]private Button startButton;
 	[SerializeField]private Text buttonText;
+	[SerializeField] GameObject loadingPanel;
 	private LoadScene loadingScript;
 	EventTrigger.Entry enter;
 	EventTrigger.Entry exit;
@@ -17,7 +15,7 @@ public class StartScreenUI : MonoBehaviour
 	private void Start()
 	{
 		loadingScript = GetComponent<LoadScene> ();
-
+		loadingPanel.SetActive (false);
 		buttonListeners ();
 		hideText ();
 	}
@@ -34,7 +32,11 @@ public class StartScreenUI : MonoBehaviour
 
 	private void buttonListeners()
 	{
-		startButton.onClick.AddListener (delegate(){loadingScript.loadScene (1);});
+		startButton.onClick.AddListener (delegate()
+		{
+			loadingScript.loadScene (1);
+			loadingPanel.SetActive(true);
+		});
 
 		enter = new EventTrigger.Entry();
 		enter.eventID = EventTriggerType.PointerEnter;

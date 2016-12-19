@@ -6,11 +6,11 @@ public class LoadScene : MonoBehaviour
 	//a variable to store the progress
 	private float percentage{get;set;}
 	//Reference to the UIScript
-	//private LoadUI loadUI{get;set;}
+	private LoadUI loadUI{get;set;}
 	private void Start()
 	{
 		//Create the reference to the script
-		//loadUI = GetComponent<LoadUI>();
+		loadUI = GetComponent<LoadUI>();
 	}
 	//This is the function you have to call to load
 	public void loadScene(int sceneIndex)
@@ -29,9 +29,9 @@ public class LoadScene : MonoBehaviour
 		while (!async.isDone)
 		{
 			//the progress will be between 0 and 0.9 so we will calculate it to be between 0 and 100
-			percentage = Mathf.Floor ((async.progress * 100) / 0.9f);
+			percentage = Mathf.Floor (async.progress / 0.9f);
 			//Update the UI in the UIscript
-			//loadUI.UpdateUI ();
+			loadUI.UpdateUI ();
 			//yield return something (Because the IEnumerator requires that)
 			yield return null;
 		}
